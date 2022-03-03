@@ -30,4 +30,10 @@ router.post(
   })
 );
 
+// Log out - this route handler is not async so doesn't need to be wrapped in asyncHandler
+router.delete("/", (_req, res) => {
+  res.clearCookie("token");
+  return res.json({ message: "success" });
+});
+
 module.exports = router;
