@@ -1,6 +1,18 @@
 .navigation {
+    position: fixed;
+    top: -15px;
+    left: -0.5px;
+    width: 100vw;
+}
+
+.navigation > ul {
+    list-style: none;
     height: 50px;
-    width: 100%;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5);
     color: aliceblue;
+}
+
+.navigation > a {
+    text-decoration: none;
+    color: azure;
 }

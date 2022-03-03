@@ -22,3 +22,13 @@
     position: absolute;
     background-color:white;
   }
+
+  #modal-content > .login-container{
+    height: 300px;
+    width: 400px;
+  }
+
+  #modal-content > .login-container > form {
+    display: flex;
+    flex-direction: column;
+  }
