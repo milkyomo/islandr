@@ -1,3 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import React from "react";
+import "./ExplorePage.css";
+
+export default function ExplorePage() {
+  return <h1>Hi from EXPLORE PAGE!</h1>;
+}

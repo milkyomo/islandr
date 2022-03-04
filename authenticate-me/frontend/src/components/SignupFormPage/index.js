@@ -27,9 +27,7 @@ function SignupFormPage() {
         if (data && data.errors) setErrors(data.errors);
       });
     }
-    return setErrors([
-      "Confirm Password field must be the same as the Password field",
-    ]);
+    return setErrors(["Passwords must match!"]);
   };
 
   return (

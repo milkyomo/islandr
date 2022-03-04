@@ -1,6 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-@import url('http://fonts.cdnfonts.com/css/arial-rounded-mt-bold');
-
 #modal {
     position: fixed;
     top: 0;
@@ -44,7 +41,6 @@
   }
 
   .loginmodal-container-box img {
-    margin-top: 20px;
     max-height: 32px;
     max-width: 32px;
   }
@@ -52,8 +48,12 @@
   .loginmodal-container-box h1 {
     text-align: center;
     font-size: 1.8em;
-    /* font-family: roboto; */
     font-family: 'Arial Rounded MT Bold', sans-serif;
+  }
+
+  .loginmodal-container ul {
+    margin-top: 15px;
+    margin-bottom: 35px;
   }
 
   .loginmodal-container input[type=submit] {
@@ -125,11 +125,16 @@
     transition: opacity ease 0.5s;
   }
 
+  .loginmodal-container a:hover {
+    opacity: 1;
+    /* transition: opacity ease 0.5s; */
+  }
+
   /* .button {
     line-height: 55px;
     padding: 0 30px;
     background: #004a80;
-    color: #fff;
+    color: #fff;flic
     display: inline-block;
     font-family: roboto;
     text-decoration: none;

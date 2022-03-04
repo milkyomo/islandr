@@ -1,18 +1,49 @@
 .navigation {
     position: fixed;
-    top: -15px;
-    left: -0.5px;
+    top: 0px;
     width: 100vw;
+    background-color: rgb(44, 44, 44);
 }
 
-.navigation > ul {
-    list-style: none;
+.content-container {
     height: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 280px;
     color: aliceblue;
+    float: right;
+    margin-right: 50px;
+    font-family: 'Arial Rounded MT Bold', sans-serif;
 }
 
-.navigation > a {
+.content-container ul {
+    margin-top: 15px;
+    list-style: none;
+}
+
+.content-container li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-container a {
     text-decoration: none;
     color: azure;
+}
+
+.content-container button {
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 20px;
+    height: 28px;
+    text-align: center;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    background-color: #128fdc;
+    color: #fff;
+    transition: all .15s ease-in-out;
+}
+
+.content-container button:hover {
+    background-color: #006dac;
 }

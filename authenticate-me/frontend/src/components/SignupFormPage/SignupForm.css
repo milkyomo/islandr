@@ -2,7 +2,8 @@
     padding: 30px;
     max-width: 350px;
     width: 100% !important;
-    background-color: #F7F7F7;
+    /* background-color: #F7F7F7; */
+    background-color: rgba(255, 255, 255, 0.95);
     margin: auto;
     border-radius: 2px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -20,7 +21,7 @@
 }
 
 .container-box img {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     max-height: 32px;
     max-width: 32px;
 }
@@ -31,6 +32,11 @@
     /* font-family: roboto; */
     font-family: 'Arial Rounded MT Bold', sans-serif;
   }
+
+.container ul {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
 
 .container input[type=submit] {
     width: 100%;
