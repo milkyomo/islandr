@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import LandingPage from "./components/LandingPage";
 import ExplorePage from "./components/ExplorePage";
+import bubbleimg from "./wrongpagebubble.png";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,14 +31,15 @@ function App() {
           <Route path="/explore">
             <ExplorePage />
           </Route>
-          <Route path="*">
-            <h1>
-              {/* Invalid Link! Tom Nook will be mad if he finds you here! Shoo! */}
-            </h1>
+          <Route path="/">
+            <div className="random-bubble">
+              <img src={bubbleimg}></img>
+            </div>
           </Route>
         </Switch>
       )}
-      {location.pathname !== "/signup" && <Footer />}
+      {/* {location.pathname !== "/signup" && <Footer />} */}
+      <Footer />
     </>
   );
 }

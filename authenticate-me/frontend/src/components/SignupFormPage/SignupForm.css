@@ -27,11 +27,12 @@
 }
 
 .container-box h1 {
-    text-align: center;
-    font-size: 1.8em;
-    /* font-family: roboto; */
-    font-family: 'Arial Rounded MT Bold', sans-serif;
-  }
+  color: #666;
+  text-align: center;
+  font-size: 1.8em;
+  /* font-family: roboto; */
+  font-family: 'Arial Rounded MT Bold', sans-serif;
+}
 
 .container ul {
   margin-top: 35px;
