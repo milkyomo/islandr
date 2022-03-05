@@ -2,27 +2,25 @@
     position: fixed;
     top: 0px;
     width: 100vw;
-    background-color: rgb(44, 44, 44);
+    /* background-color: rgb(44, 44, 44); */
     z-index: 3;
-}
-
-.content-container {
-    height: 50px;
-    width: 280px;
-    color: aliceblue;
-    float: right;
-    margin-right: 50px;
     font-family: 'Arial Rounded MT Bold', sans-serif;
 }
 
-.content-container ul {
-    margin-top: 15px;
-    list-style: none;
-}
-
-.content-container li {
+.content-container {
     display: flex;
     justify-content: space-between;
+}
+
+/* Logo  */
+
+.logo-container {
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    color: #fff;
+    font-size: 25px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    margin-left: 30px;
 }
 
 .content-container a {
@@ -30,7 +28,52 @@
     color: azure;
 }
 
-.content-container button {
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Right side container  */
+.right-container {
+    width: 30%;
+}
+
+
+/* Explore  */
+
+.explore {
+    position: absolutef;
+    font-size: 30px;
+}
+
+/* Logged in  */
+
+.welcome-text {
+    position: absolute;
+    margin-left: 50px;
+    color: #fff;
+    font-size: 25px;
+    max-width: 230px;
+}
+
+.profile-button {
+    color: #fff;
+    cursor: pointer;
+    font-size: 30px;
+    position: relative;
+}
+
+.loggedin-container {
+    display: flex;
+}
+
+.profile-dropdown ul {
+    padding-left: none;
+}
+
+/* Not Logged In */
+
+.login-button {
     font-family: 'Arial Rounded MT Bold', sans-serif;
     box-sizing: border-box;
     display: inline-block;
@@ -45,6 +88,6 @@
     transition: all .15s ease-in-out;
 }
 
-.content-container button:hover {
+.login-button:hover {
     background-color: #006dac;
 }

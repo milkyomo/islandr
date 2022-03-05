@@ -1,10 +1,12 @@
 /* Slideshow */
 
 .slideshow {
+  position: fixed;
+  top: 100px;
   margin: 0 auto;
   overflow: hidden;
   /* max-width: 500px; */
-  width: 90vw;
+  width: 1027px;
 }
 
 .slideshowSlider {
@@ -17,7 +19,7 @@
 
   /* height: 400px; */
   width: 100%;
-  border-radius: 40px;
+  /* border-radius: 40px; */
 }
 
 /* Buttons */
@@ -28,16 +30,16 @@
 
 .slideshowDot {
   display: inline-block;
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
 
   cursor: pointer;
   margin: 15px 7px 0px;
 
-  background-color: #c4c4c4;
+  background-color: #c4c4c433;
 }
 
 .slideshowDot.active {
-  background-color: #6a0dad;
+  background-color: #ffffff8a;
 }
