@@ -1,0 +1,48 @@
+.welcome-text {
+    position: absolute;
+    /* margin-left: 50px; */
+    color: #fff;
+    /* font-size: 25px; */
+    /* max-width: 230px; */
+}
+
+.profile-button {
+    color: #fff;
+    cursor: pointer;
+    font-size: 30px;
+    position: absolute;
+}
+
+.loggedin-container {
+    display: flex;
+}
+
+.profile-dropdown ul {
+    padding-left: none;
+    position: absolute;
+    color: #fff;
+    width: 100%;
+    left: 0;
+    top: 100%;
+}
+
+/* Not Logged In */
+
+.login-button {
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 20px;
+    height: 28px;
+    text-align: center;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    background-color: #128fdc;
+    color: #fff;
+    transition: all .15s ease-in-out;
+}
+
+.login-button:hover {
+    background-color: #006dac;
+}
