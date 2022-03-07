@@ -1,17 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Proxima+Nova');
+
+.landingpage-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+.landing-stuff {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.landing-stuff > h1 {
+  font-size: 56px;
+  font-family: 'proxima-nova', sans-serif;
+  /* min-width: 800px; */
+  text-shadow: 1px 1px 2px rgb(97, 97, 97);
+}
+
+.landing-stuff > p {
+  font-family: 'proxima-nova', sans-serif;
+  font-size: 26px;
+  color: white;
+  text-shadow: 1px 1px 2px rgb(97, 97, 97);
+}
+
+.landing-stuff > button {
+  font-family: 'Arial Rounded MT Bold', sans-serif;
+  font-size: 20px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 20px;
+  margin-top: 30px;
+  height: 50px;
+  text-align: center;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  background-color: #c782ff;
+  color: #fff;
+  transition: all .15s ease-in-out;
+
+  position: relative;
+}
+
+.landing-stuff > button:hover {
+  background-color: #deb6ff;
+  box-shadow: 0 5px 15px #838383;
+}
+
 /* Slideshow */
 
 .slideshow {
   position: fixed;
-  top: 100px;
-  margin: 0 auto;
+  display: inline-block;
+  top: -7px;
+  margin: none;
   overflow: hidden;
-  /* max-width: 500px; */
-  width: 1027px;
+  width: 100vw;
+  z-index: -3;
+  /* object-fit: cover; */
 }
 
 .slideshowSlider {
   white-space: nowrap;
-  transition: ease 1000ms;
+  transition: ease 1500ms;
 }
 
 .slide {
@@ -23,6 +80,8 @@
 }
 
 /* Buttons */
+
+/*
 
 .slideshowDots {
   text-align: center;
@@ -43,3 +102,5 @@
 .slideshowDot.active {
   background-color: #ffffff8a;
 }
+
+*/

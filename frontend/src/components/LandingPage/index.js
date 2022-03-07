@@ -13,7 +13,7 @@ const delay = 15500;
 let images = [img1, img2, img3, img4, img5, img6, img7];
 
 function Slideshow() {
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = useState(0);
   const timeoutRef = React.useRef(null);
 
   function resetTimeout() {
@@ -22,7 +22,7 @@ function Slideshow() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
       () =>
@@ -38,26 +38,36 @@ function Slideshow() {
   }, [index]);
 
   return (
-    <div className="slideshow">
-      <div
-        className="slideshowSlider"
-        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-      >
-        {images.map((image, index) => (
-          <img className="slide" key={index} src={image}></img>
-        ))}
-      </div>
+    <div className="landingpage-container">
+      <div className="slideshow">
+        <div
+          className="slideshowSlider"
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+        >
+          {images.map((image, index) => (
+            <img className="slide" key={index} src={image}></img>
+          ))}
+        </div>
 
-      <div className="slideshowDots">
-        {images.map((_, idx) => (
-          <div
-            key={idx}
-            className={`slideshowDot${index === idx ? " active" : ""}`}
-            onClick={() => {
-              setIndex(idx);
-            }}
-          ></div>
-        ))}
+        {/* <div className="slideshowDots">
+          {images.map((_, idx) => (
+            <div
+              key={idx}
+              className={`slideshowDot${index === idx ? " active" : ""}`}
+              onClick={() => {
+                setIndex(idx);
+              }}
+            ></div>
+          ))}
+        </div> */}
+      </div>
+      <div className="landing-stuff">
+        <h1>Find your inspiration.</h1>
+        <p>
+          Join the islandr community get inspired for your next Animal Crossing:
+          New Horizon's build.
+        </p>
+        <button>Join the fun!</button>
       </div>
     </div>
   );

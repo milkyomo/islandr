@@ -4,10 +4,12 @@ import { FaBars } from "react-icons/fa";
 
 export const Nav = styled.nav`
   /* background: #000; */
+  background: rgba(0, 0, 0, 0.2);
   height: 80px;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem calc((100vw - 2000px) / 2);
+  /* padding: 0.5rem calc((100vw - 2000px) / 2); */
+  padding: 1rem;
   z-index: 10;
 `;
 

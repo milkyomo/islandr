@@ -154,12 +154,10 @@
   }
 
   .signup-container {
-    margin-top: 20px;
-    /* margin: 0; */
-  }
-
-  .signup-container {
     color: rgb(39, 39, 39);
+    margin-top: 20px;
+    margin-left: 19px;
+    /* margin: 0; */
   }
 
   .signup-container a {
