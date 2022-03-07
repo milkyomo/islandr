@@ -20,7 +20,8 @@
 
   #modal-content {
     position: absolute;
-    background-color:white;
+    /* background-color:white;
+    border-radius: 100px; */
   }
 
   .loginmodal-container {
@@ -29,11 +30,12 @@
     width: 100% !important;
     background-color: #F7F7F7;
     margin: 0 auto;
-    border-radius: 2px;
+    border-radius: 20px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     font-family: roboto;
   }
+
 
   .loginmodal-container-box {
     display: flex;
@@ -96,15 +98,19 @@
 
   .loginmodal-submit {
     border: 0px;
-    width: 80px;
+    /* width: 80px; */
+    width: 290px;
+    border-radius: 50px;
     color: #fff;
     text-shadow: 0 1px rgba(0,0,0,0.1);
     background-color: #4d90fe;
-    padding: 15px 0px;
+    padding: 10px 0px;
     font-family: roboto;
-    font-size: 14px;
+    font-size: 18px;
     margin-top: 15px;
-    margin-left: 135px;
+    /* margin-left: 110px; */
+    /* margin-right: 50px; */
+    margin-bottom: 15px;
   }
 
   .loginmodal-submit:hover {
@@ -114,8 +120,8 @@
   }
 
   .loginmodal-container a {
-    margin-top: 20px;
-    margin-left: 98.31px;
+    /* margin-top: 20px; */
+    /* margin-left: 98.31px; */
     text-decoration: none;
     color: #666;
     font-size: 15px;
@@ -123,6 +129,7 @@
     text-align: center;
     display: inline-block;
     opacity: 0.6;
+    cursor: pointer;
     transition: opacity ease 0.5s;
   }
 
@@ -130,6 +137,39 @@
     opacity: 1;
     /* transition: opacity ease 0.5s; */
   }
+
+  .bottom-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    padding: 0 20px;
+  }
+
+  .demo-link {
+    margin-bottom: 20px;
+  }
+
+  .createaccount {
+    margin-top: 20px;
+  }
+
+  .signup-container {
+    margin-top: 20px;
+    /* margin: 0; */
+  }
+
+  .signup-container {
+    color: rgb(39, 39, 39);
+  }
+
+  .signup-container a {
+    margin: 0;
+    padding-left: 8px;
+  }
+
+  /* .createaccount {
+    margin-bottom: 15px;
+  } */
 
   /* .button {
     line-height: 55px;
