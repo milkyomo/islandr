@@ -6,25 +6,28 @@
     /* max-width: 230px; */
 }
 
+.islandr {
+    font-size: 30px;
+}
+
 .profile-button {
     color: #fff;
     cursor: pointer;
     font-size: 30px;
-    position: fixed;
-    top: 24px;
-    right: 20px;
+    margin-right: 25px;
+    /* position: fixed; */
+    /* top: 22.5px; */
+    /* right: 20px; */
 }
 
 .explore-button {
     color: #fff;
     cursor: pointer;
     font-size: 30px;
-    position: fixed;
-    right: 50px;
-}
-
-.loggedin-container {
-    display: flex;
+    position: relative;
+    right: 30px;
+    max-height: 30px;
+    max-width: 32px;
 }
 
 .profile-dropdown {

@@ -45,11 +45,11 @@ function Navigation({ isLoaded }) {
       <Nav>
         <NavLink exact to="/">
           <img src={img} alt="logo"></img>
-          islandr
+          <p className="islandr">islandr</p>
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to="/explore" className="explore-button" activeStyle>
+          <NavLink to="/explore" className="explore-button">
             <i class="fa-regular fa-compass"></i>
           </NavLink>
           {/* <NavLink to="/k" activeStyle>
