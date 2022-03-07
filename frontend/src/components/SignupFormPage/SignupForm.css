@@ -5,7 +5,8 @@
     /* background-color: #F7F7F7; */
     background-color: rgba(255, 255, 255, 0.95);
     margin: auto;
-    border-radius: 2px;
+    border-radius: 20px;
+
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     font-family: roboto;
@@ -65,26 +66,27 @@
 }
 
 .signup-submit {
-    border: 0px;
-    width: 80px;
-    color: #fff;
-    text-shadow: 0 1px rgba(0,0,0,0.1);
-    background-color: #4d90fe;
-    padding: 15px 0px;
-    font-family: roboto;
-    font-size: 14px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 135px;
+  border: 0px;
+  width: 290px;
+  border-radius: 50px;
+  color: #fff;
+  background-color: #c782ff;
+  padding: 10px 0px;
+  font-family: roboto;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  transition: all .15s ease-in-out;
+  cursor: pointer;
   }
 
   .signup-submit:hover {
     border: 0px;
-    text-shadow: 0 1px rgba(0,0,0,0.3);
-    background-color: #357ae8;
+    color: #fff;
+    background-color: #deb6ff;
   }
 
-  .signup-container a {
+  /* .signup-container a {
     margin-top: 20px;
     margin-left: 98.31px;
     text-decoration: none;
@@ -95,4 +97,4 @@
     display: inline-block;
     opacity: 0.6;
     transition: opacity ease 0.5s;
-  }
+  } */
