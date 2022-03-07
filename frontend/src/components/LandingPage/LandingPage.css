@@ -29,12 +29,13 @@
   text-shadow: 1px 1px 2px rgb(97, 97, 97);
 }
 
-.landing-stuff > button {
+.landing-button {
   font-family: 'Arial Rounded MT Bold', sans-serif;
   font-size: 20px;
+  text-decoration: none;
   box-sizing: border-box;
   display: inline-block;
-  padding: 0 20px;
+  padding: 10px 20px;
   margin-top: 30px;
   height: 50px;
   text-align: center;
@@ -48,7 +49,7 @@
   position: relative;
 }
 
-.landing-stuff > button:hover {
+.landing-button:hover {
   background-color: #deb6ff;
   box-shadow: 0 5px 15px #838383;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import img1 from "../images/image1.jpg";
 import img2 from "../images/image2.jpg";
@@ -13,6 +14,23 @@ const delay = 15500;
 let images = [img1, img2, img3, img4, img5, img6, img7];
 
 function Slideshow() {
+  const sessionUser = useSelector((state) => state.session.user);
+
+  let joinTheFunBtn;
+  if (sessionUser) {
+    joinTheFunBtn = (
+      <a href="/explore" className="landing-button">
+        Join the fun!
+      </a>
+    );
+  } else {
+    joinTheFunBtn = (
+      <a href="/signup" className="landing-button">
+        Join the fun!
+      </a>
+    );
+  }
+
   const [index, setIndex] = useState(0);
   const timeoutRef = React.useRef(null);
 
@@ -64,10 +82,10 @@ function Slideshow() {
       <div className="landing-stuff">
         <h1>Find your inspiration.</h1>
         <p>
-          Join the islandr community get inspired for your next Animal Crossing:
-          New Horizon's build.
+          Join the islandr community and get inspired for your next Animal
+          Crossing: New Horizon's build.
         </p>
-        <button>Join the fun!</button>
+        {joinTheFunBtn}
       </div>
     </div>
   );

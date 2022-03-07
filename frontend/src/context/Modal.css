@@ -103,7 +103,8 @@
     border-radius: 50px;
     color: #fff;
     text-shadow: 0 1px rgba(0,0,0,0.1);
-    background-color: #4d90fe;
+    /* background-color: #4d90fe; */
+    background-color: #c782ff;
     padding: 10px 0px;
     font-family: roboto;
     font-size: 18px;
@@ -111,12 +112,15 @@
     /* margin-left: 110px; */
     /* margin-right: 50px; */
     margin-bottom: 15px;
+    transition: all .15s ease-in-out;
+    cursor: pointer;
   }
 
   .loginmodal-submit:hover {
     border: 0px;
     text-shadow: 0 1px rgba(0,0,0,0.3);
-    background-color: #357ae8;
+    /* background-color: #357ae8; */
+    background-color: #deb6ff;
   }
 
   .loginmodal-container a {
@@ -130,11 +134,11 @@
     display: inline-block;
     opacity: 0.6;
     cursor: pointer;
-    transition: opacity ease 0.5s;
+    transition: all .15s ease-in-out;
   }
 
   .loginmodal-container a:hover {
-    opacity: 1;
+    color: #deb6ff;
     /* transition: opacity ease 0.5s; */
   }
 
