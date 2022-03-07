@@ -30,6 +30,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const imageId = parseInt(req.params.id, 10);
     const image = await db.Image.findByPk(imageId);
+
     return res.json(image);
   })
 );

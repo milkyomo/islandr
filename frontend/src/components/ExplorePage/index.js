@@ -13,15 +13,14 @@ export default function ExplorePage() {
     dispatch(fetchImages());
   }, [dispatch]);
 
-  console.log("IMAGES!!!!!!!!!!!!!", images);
   return (
     <div>
       <h1>Explore Page</h1>
-      <ol>
+      <div>
         {images.map(({ id, imageUrl }) => (
           <ExploreDetail key={id} id={id} imageUrl={imageUrl} />
         ))}
-      </ol>
+      </div>
     </div>
   );
 }

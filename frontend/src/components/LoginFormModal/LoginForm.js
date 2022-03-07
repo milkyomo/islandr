@@ -64,7 +64,7 @@ function LoginForm() {
             required
           />
         </label>
-        <button type="submit" name="login" class="login loginmodal-submit">
+        <button type="submit" name="login" className="login loginmodal-submit">
           Login
         </button>
       </form>

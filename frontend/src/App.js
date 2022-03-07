@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import LandingPage from "./components/LandingPage";
 import ExplorePage from "./components/ExplorePage";
+import ImageDetail from "./components/ImageDetail";
 import bubbleimg from "./wrongpagebubble.png";
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/explore">
             <ExplorePage />
+          </Route>
+          <Route path="/images/:id">
+            <ImageDetail />
           </Route>
           <Route path="/">
             <div className="random-bubble">
