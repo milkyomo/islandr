@@ -29,7 +29,7 @@ export const fetchImages = () => async (dispatch) => {
 export const fetchImage = (imageId) => async (dispatch) => {
   const res = await fetch(`/api/images/${imageId.id}`);
   const image = await res.json();
-
+  console.log("IMAGEGEGEEGE", image);
   dispatch(loadImage(image));
   return image;
 };

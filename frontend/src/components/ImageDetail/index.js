@@ -9,11 +9,7 @@ const ImageDetail = function () {
   const imageId = useParams();
 
   const imageObject = useSelector((state) => state.imageState.entries);
-  //   const image = Object.values(imageObject);
-
-  console.log("IMAGEEEEE", imageObject);
-  //   const { content, imageUrl, userId } = image;
-  //   console.log(content);
+  const image = imageObject[imageId.id];
 
   useEffect(() => {
     dispatch(fetchImage(imageId));
@@ -21,7 +17,9 @@ const ImageDetail = function () {
 
   return (
     <>
-      <h1>Hi</h1>
+      <img src={image?.imageUrl}></img>
+      <h1>Posted by {image?.User.username}</h1>
+      <p>"{image?.content}"</p>
     </>
   );
 };

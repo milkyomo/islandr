@@ -43,7 +43,7 @@ function Navigation({ isLoaded }) {
         <Bars />
         <NavMenu>
           <NavLink to="/explore" className="explore-button">
-            <i class="fa-regular fa-compass"></i>
+            <i className="fa-regular fa-compass"></i>
           </NavLink>
           {/* <NavLink to="/k" activeStyle>
             Example

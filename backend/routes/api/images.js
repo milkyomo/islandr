@@ -29,7 +29,14 @@ router.get(
   "/:id",
   asyncHandler(async (req, res) => {
     const imageId = parseInt(req.params.id, 10);
-    const image = await db.Image.findByPk(imageId);
+    const image = await db.Image.findOne({
+      where: {
+        id: imageId,
+      },
+      include: {
+        model: db.User,
+      },
+    });
 
     return res.json(image);
   })
