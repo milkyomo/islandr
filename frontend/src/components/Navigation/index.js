@@ -5,15 +5,8 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import img from "../images/favicon-32x32.png";
 // import "./Navigation.css";
-import {
-  Nav,
-  NavLink,
-  Bars,
-  NavMenu,
-  NavBtn,
-  NavBtnLink,
-} from "./NavbarElements";
-import "./Navigation2.css";
+import { Nav, NavLink, Bars, NavMenu } from "./NavbarElements";
+import "./Navigation.css";
 
 //uselocation, check if location is signup, if so return null, otherwise, return 26-37
 

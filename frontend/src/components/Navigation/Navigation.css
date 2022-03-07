@@ -1,79 +1,69 @@
-.navigation {
-    position: fixed;
-    top: 0px;
-    width: 100vw;
-    /* background-color: rgb(44, 44, 44); */
-    z-index: 3;
-    font-family: 'Arial Rounded MT Bold', sans-serif;
-}
-
-.content-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Logo  */
-
-.logo-container {
-    font-family: 'Arial Rounded MT Bold', sans-serif;
-    color: #fff;
-    font-size: 25px;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    margin-left: 30px;
-}
-
-.content-container a {
-    text-decoration: none;
-    color: azure;
-}
-
-.logo-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Right side container  */
-.right-container {
-    width: 30%;
-}
-
-
-/* Explore  */
-
-.explore {
-    position: absolute;
-    font-size: 30px;
-}
-
-/* Logged in  */
-
 .welcome-text {
     position: absolute;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     color: #fff;
-    font-size: 25px;
-    max-width: 230px;
+    /* font-size: 25px; */
+    /* max-width: 230px; */
+}
+
+.islandr {
+    font-size: 30px;
 }
 
 .profile-button {
     color: #fff;
     cursor: pointer;
     font-size: 30px;
+    margin-right: 25px;
+    /* position: fixed; */
+    /* top: 22.5px; */
+    /* right: 20px; */
+}
+
+.explore-button {
+    color: #fff;
+    cursor: pointer;
+    font-size: 30px;
     position: relative;
+    right: 30px;
+    max-height: 30px;
+    max-width: 32px;
 }
 
-.loggedin-container {
+.profile-dropdown {
+    position: fixed;
+    top: 60px;
+    right: 1rem;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.13);
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    padding-right: 1.2rem;
+    padding-left: 0.4rem;
+    border-radius: 20px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.profile-dropdown ul {
-    padding-left: none;
+.profile-dropdown ul, ul li {
+    /* padding-left: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%; */
+    color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-left: 10px;
+    line-height: 2rem;
 }
 
 /* Not Logged In */
 
-.login-button {
+.login-button, .logout-button {
     font-family: 'Arial Rounded MT Bold', sans-serif;
     box-sizing: border-box;
     display: inline-block;
@@ -86,8 +76,23 @@
     background-color: #128fdc;
     color: #fff;
     transition: all .15s ease-in-out;
+
+    position: relative;
 }
 
 .login-button:hover {
     background-color: #006dac;
+}
+
+.logout-button:hover {
+    background-color: #006dac;
+}
+
+.login-button {
+    margin-right: 10px;
+}
+
+.logout-button {
+    margin-top: 1rem;
+    max-width: 100px;
 }
