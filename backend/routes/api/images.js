@@ -36,6 +36,27 @@ router.get(
   })
 );
 
-//
+//post picture
+router.post(
+  "/new",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const userId = req.session.auth.userId;
+    const user = await db.User.findByPk(userId);
+
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@", user);
+
+    const { imageUrl, content } = req.body;
+
+    const image = await db.Image.build({
+      userId: res.locals.user.id,
+      imageUrl,
+      content,
+    });
+
+    await image.save();
+    res.redirect(`/${image.id}`);
+  })
+);
 
 module.exports = router;

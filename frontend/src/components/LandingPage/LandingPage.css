@@ -65,8 +65,10 @@
   margin: none;
   overflow: hidden;
   width: 100vw;
+  /* height: 100vw; */
   z-index: -3;
-  /* object-fit: cover; */
+  /* object-fit: cover;
+  object-position: bottom; */
 }
 
 .slideshowSlider {
@@ -75,10 +77,11 @@
 }
 
 .slide {
-  display: inline-block;
+  /* display: inline-block; */
 
   /* height: 400px; */
   width: 100%;
+  height: 100%;
   /* border-radius: 40px; */
 }
 
