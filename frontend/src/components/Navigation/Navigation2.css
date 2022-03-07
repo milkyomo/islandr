@@ -10,25 +10,54 @@
     color: #fff;
     cursor: pointer;
     font-size: 30px;
-    position: absolute;
+    position: fixed;
+    top: 24px;
+    right: 20px;
+}
+
+.explore-button {
+    color: #fff;
+    cursor: pointer;
+    font-size: 30px;
+    position: fixed;
+    right: 50px;
 }
 
 .loggedin-container {
     display: flex;
 }
 
-.profile-dropdown ul {
-    padding-left: none;
+.profile-dropdown {
+    position: fixed;
+    top: 60px;
+    right: 1rem;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.13);
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    padding-right: 1.2rem;
+    padding-left: 0.4rem;
+    border-radius: 20px;
+}
+
+.profile-dropdown ul, ul li {
+    /* padding-left: none;
     position: absolute;
-    color: #fff;
     width: 100%;
     left: 0;
-    top: 100%;
+    top: 100%; */
+    color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-left: 10px;
+    line-height: 2rem;
 }
 
 /* Not Logged In */
 
-.login-button {
+.login-button, .logout-button {
     font-family: 'Arial Rounded MT Bold', sans-serif;
     box-sizing: border-box;
     display: inline-block;
@@ -41,8 +70,18 @@
     background-color: #128fdc;
     color: #fff;
     transition: all .15s ease-in-out;
+
+    position: relative;
 }
 
 .login-button:hover {
     background-color: #006dac;
+}
+
+.logout-button:hover {
+    background-color: #006dac;
+}
+
+.logout-button {
+    margin-top: 1rem;
 }

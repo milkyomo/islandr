@@ -29,14 +29,14 @@ function Navigation({ isLoaded }) {
     );
   } else {
     sessionLinks = (
-      <ul>
-        <li>
+      <>
+        <div className="signup">
           <NavLink to="/signup">Sign Up</NavLink>
-        </li>
-        <li>
+        </div>
+        <div>
           <LoginFormModal />
-        </li>
-      </ul>
+        </div>
+      </>
     );
   }
 
@@ -49,61 +49,61 @@ function Navigation({ isLoaded }) {
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to="/explore" activeStyle>
-            Explore
+          <NavLink to="/explore" className="explore-button" activeStyle>
+            <i class="fa-regular fa-compass"></i>
           </NavLink>
-          <NavLink to="/k" activeStyle>
+          {/* <NavLink to="/k" activeStyle>
             Example
-          </NavLink>
+          </NavLink> */}
           {isLoaded && sessionLinks}
         </NavMenu>
       </Nav>
     </>
   );
-
-  // return (
-  //   <>
-  //     <Nav>
-  //       <NavLink exact to="/">
-  //         <img src={img} alt="logo"></img>
-  //         islandr
-  //       </NavLink>
-  //       <Bars />
-  //       <NavMenu>
-  //         <NavLink to="/explore" activeStyle>
-  //           Explore
-  //         </NavLink>
-  //         <NavLink to="/k" activeStyle>
-  //           Example
-  //         </NavLink>
-  //       </NavMenu>
-  //       <NavBtn>
-  //         <NavBtnLink to="/signin">Sign In</NavBtnLink>
-  //       </NavBtn>
-  //     </Nav>
-  //   </>
-  // );
-
-  // return (
-  //   <div className="navigation">
-  //     <div className="content-container">
-  //       <div className="logo-container">
-  //         <a href="/">
-  //           <img src={img} alt="logo"></img>
-  //           islander
-  //         </a>
-  //       </div>
-
-  //       <div className="right-container">
-  //         <NavLink exact to="/explore" className="explore">
-  //           {/* Explore */}
-  //           <i class="fa-regular fa-compass"></i>
-  //         </NavLink>
-  //         <div className="profile">{isLoaded && sessionLinks}</div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 }
 
 export default Navigation;
+
+// return (
+//   <>
+//     <Nav>
+//       <NavLink exact to="/">
+//         <img src={img} alt="logo"></img>
+//         islandr
+//       </NavLink>
+//       <Bars />
+//       <NavMenu>
+//         <NavLink to="/explore" activeStyle>
+//           Explore
+//         </NavLink>
+//         <NavLink to="/k" activeStyle>
+//           Example
+//         </NavLink>
+//       </NavMenu>
+//       <NavBtn>
+//         <NavBtnLink to="/signin">Sign In</NavBtnLink>
+//       </NavBtn>
+//     </Nav>
+//   </>
+// );
+
+// return (
+//   <div className="navigation">
+//     <div className="content-container">
+//       <div className="logo-container">
+//         <a href="/">
+//           <img src={img} alt="logo"></img>
+//           islander
+//         </a>
+//       </div>
+
+//       <div className="right-container">
+//         <NavLink exact to="/explore" className="explore">
+//           {/* Explore */}
+//           <i class="fa-regular fa-compass"></i>
+//         </NavLink>
+//         <div className="profile">{isLoaded && sessionLinks}</div>
+//       </div>
+//     </div>
+//   </div>
+// );
