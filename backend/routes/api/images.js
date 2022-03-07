@@ -8,9 +8,7 @@ const {
 } = require("../../utils/auth");
 
 // const { User } = require("../../db/models");
-
-const { check } = require("express-validator");
-const { handleValidationErrors } = require("../../utils/validation");
+const imageValidations = require("../../utils/validateImage");
 
 const db = require("../../db/models");
 // const { User, Image, Comment } = db;
@@ -40,22 +38,10 @@ router.get(
 router.post(
   "/new",
   requireAuth,
+  imageValidations.validateCreate,
   asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId;
-    const user = await db.User.findByPk(userId);
-
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@", user);
-
-    const { imageUrl, content } = req.body;
-
-    const image = await db.Image.build({
-      userId: res.locals.user.id,
-      imageUrl,
-      content,
-    });
-
-    await image.save();
-    res.redirect(`/${image.id}`);
+    const image = await db.Image.create(req.body);
+    res.json(image);
   })
 );
 
