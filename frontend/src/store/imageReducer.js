@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 const LOAD_IMAGES = "images/loadImages";
 const LOAD_IMAGE = "images/loadImage";
 const ADD_IMAGE = "images/addImage";
@@ -29,9 +31,30 @@ export const fetchImages = () => async (dispatch) => {
 export const fetchImage = (imageId) => async (dispatch) => {
   const res = await fetch(`/api/images/${imageId.id}`);
   const image = await res.json();
-  console.log("IMAGEGEGEEGE", image);
+  // console.log("IMAGEGEGEEGE", image);
   dispatch(loadImage(image));
   return image;
+};
+
+//thunk creator for POST image request
+export const postImage = (data) => async (dispatch) => {
+  try {
+    const res = await csrfFetch("/api/images/new", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const newImage = await res.json();
+    // console.log("THUNK NEW IMAGE: ", newImage);
+    dispatch(addImage(newImage));
+    return newImage;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const initialState = { entries: {}, isLoading: true };
@@ -49,9 +72,25 @@ const imageReducer = (state = initialState, action) => {
     case LOAD_IMAGE:
       newState = { ...state };
       newEntries = {};
-      newEntries[action.image.id] = action.image;
+      newEntries[action.image?.id] = action.image;
       newState.entries = newEntries;
       return newState;
+    case ADD_IMAGE:
+      if (!state[action.newImage.id]) {
+        newState = {
+          ...state,
+          // [action.newImage.id]: action.newImage,
+          newImage: action.newImage,
+        };
+        return newState;
+      }
+      return {
+        ...state,
+        [action.newImage.id]: {
+          ...state[action.newImage.id],
+          ...action.newImage,
+        },
+      };
     default:
       return state;
   }

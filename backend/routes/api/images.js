@@ -49,7 +49,7 @@ router.post(
   imageValidations.validateCreate,
   asyncHandler(async (req, res) => {
     const image = await db.Image.create(req.body);
-    res.json(image);
+    return res.json(image);
   })
 );
 
