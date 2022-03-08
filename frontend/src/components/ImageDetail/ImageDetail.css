@@ -5,5 +5,15 @@
     justify-content: center;
     flex-direction: column;
     width: 90vw;
-    margin: 0 auto;
+    margin: 100px auto;
+}
+
+.single-image-detail-container h1 {
+    padding: 20px 0;
+}
+
+.single-image-detail-container p {
+    color: white;
+    font-size: 15px;
+    padding-top: 20px;
 }

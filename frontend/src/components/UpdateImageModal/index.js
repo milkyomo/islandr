@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
-import CreateImageForm from "./CreateImageForm";
+import UpdateImageForm from "./UpdateImageForm";
 
-function CreateImageFormModal() {
+function UpdateImageFormModal({ image }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <p onClick={() => setShowModal(true)} className="postBtn">
-        <i className="fa-solid fa-circle-plus"></i>
+        <i className="fa-solid fa-pen-to-square"></i>
       </p>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateImageForm onClose={() => setShowModal(false)} />
+          <UpdateImageForm image={image} onClose={() => setShowModal(false)} />
         </Modal>
       )}
     </>
   );
 }
 
-export default CreateImageFormModal;
+export default UpdateImageFormModal;

@@ -49,6 +49,42 @@ router.post(
   imageValidations.validateCreate,
   asyncHandler(async (req, res) => {
     const image = await db.Image.create(req.body);
+    console.log("IMAGE POST", image);
+    return res.json(image);
+  })
+);
+
+//update picture
+router.put(
+  "/:id",
+  requireAuth,
+  imageValidations.validateCreate,
+  asyncHandler(async function (req, res) {
+    const { id, imageUrl, content } = req.body;
+    // console.log("REQ.BODY", id);
+    // const updatedImage = await db.Image.update(req.body);
+    await db.Image.update(
+      { imageUrl, content },
+      {
+        where: {
+          id,
+        },
+        include: {
+          model: db.User,
+        },
+        returning: true,
+      }
+    );
+    const image = await db.Image.findOne({
+      where: {
+        id,
+      },
+      include: {
+        model: db.User,
+      },
+    });
+    // console.log("IMAGE HERE:::", image);
+    // console.log("IMAGE KEYING INTO HERE:::", image[1][0]);
     return res.json(image);
   })
 );

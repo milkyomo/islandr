@@ -54,44 +54,66 @@ export const postImage = (data) => async (dispatch) => {
     return newImage;
   } catch (e) {
     //how to show validation errors?
-    console.log("ERRRRORORORORORS", e);
+    console.log(e);
   }
 };
 
-const initialState = { entries: {}, isLoading: true };
+//thunk creator for UPDATE image request
+export const updateImage = (data) => async (dispatch) => {
+  const imageId = data.id;
+  try {
+    const res = await csrfFetch(`/api/images/${imageId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const updatedImage = await res.json();
+    console.log("UPDATAPTUAEPJDG IMAGE", updatedImage);
+    dispatch(loadImage(updatedImage));
+    return updateImage;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const initialState = { entries: {}, isLoading: true };
 
 const imageReducer = (state = initialState, action) => {
-  let newState;
+  let newState = { ...state };
   let newEntries;
   switch (action.type) {
     case LOAD_IMAGES:
-      newState = { ...state };
       newEntries = {};
       action.images.forEach((image) => (newEntries[image.id] = image));
       newState.entries = newEntries;
       return newState;
     case LOAD_IMAGE:
-      newState = { ...state };
-      newEntries = {};
-      newEntries[action.image?.id] = action.image;
-      newState.entries = newEntries;
+      // newEntries = {};
+      // newEntries[action.image?.id] = action.image;
+      // newState.entries = newEntries;
+      newState.current = action.image;
       return newState;
     case ADD_IMAGE:
-      if (!state[action.newImage.id]) {
-        newState = {
-          ...state,
-          // [action.newImage.id]: action.newImage,
-          newImage: action.newImage,
-        };
-        return newState;
-      }
-      return {
-        ...state,
-        [action.newImage.id]: {
-          ...state[action.newImage.id],
-          ...action.newImage,
-        },
-      };
+      // if (!state[action.newImage.id]) {
+      //   newState = {
+      //     ...state,
+      //     // [action.newImage.id]: action.newImage,
+      //     newImage: action.newImage,
+      //   };
+      newState.current = action.image;
+      return newState;
+    // }
+    // return {
+    //   ...state,
+    //   [action.newImage.id]: {
+    //     ...state[action.newImage.id],
+    //     ...action.newImage,
+    //   },
+    // };
     default:
       return state;
   }

@@ -24,6 +24,7 @@ html {
     background-image: url("https://i.redd.it/fv8pbnl64po41.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     /* overflow: hidden; */
 }
 

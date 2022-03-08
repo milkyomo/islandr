@@ -1,59 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Redirect } from "react-router-dom";
-import { postImage } from "../../store/imageReducer";
+import { useHistory, useParams, Redirect } from "react-router-dom";
+import { fetchImage, updateImage } from "../../store/imageReducer";
 import img from "../images/favicon-32x32.png";
 
-const CreateImageForm = ({ onClose }) => {
+const UpdateImageForm = ({ image, onClose }) => {
   const sessionUser = useSelector((state) => state.session.user);
+  //   const sessionImage = useSelector((state) => state.session);
+  const imageToUpdate = useSelector(() => image);
+  //   console.log("SESSIONIMAFE", imageToUpdate.imageUrl);
+  //HOW TO GET IMAGE TO CHANGE THE VALUES OF IT?????? PASS IN AS CHILD?
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [imageUrl, setImageUrl] = useState("");
-  const [content, setContent] = useState("");
+  const [imageUrl, setImageUrl] = useState(imageToUpdate.imageUrl);
+  const [content, setContent] = useState(imageToUpdate.content);
   const [errors, setErrors] = useState([]);
 
   const updatedImageUrl = (e) => setImageUrl(e.target.value);
   const updatedContent = (e) => setContent(e.target.value);
+
+  const params = useParams();
+  //   const id = oldId.id;
+  //   console.log(id);
+
+  useEffect(() => {
+    dispatch(fetchImage(params));
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setErrors([]);
 
-    let createdImage = {
-      userId: sessionUser.id,
+    let updatedImage = {
+      id: params.id,
       imageUrl,
       content,
     };
-
-    const newImage = await dispatch(postImage(createdImage)).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-        console.log(errors);
-      }
-    );
-
+    // console.log("ONCLOSE", onClose);
+    dispatch(updateImage(updatedImage)).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+      console.log(errors);
+    });
     onClose();
-    history.push(`/images/${newImage.id}`);
-    // console.log("CREATED IMAGE ID", createdImage);
-
-    // if (createdImage) {
-    //   const newImage = await dispatch(postImage(createdImage));
-
-    //   history.push(`/images/${newImage.id}`);
-    // }
-
-    // const newImage = await dispatch(postImage(createdImage));
-    // return history.push(`/images/${newImage.id}`);
+    // history.push(`/images/${params.id}`);
   };
 
   return (
     <div className="createimg-container">
       <div className="loginmodal-container-box">
-        <h1>Create a Post</h1>
+        <h1>Edit your post</h1>
         <img src={img} />
       </div>
       <br></br>
@@ -84,4 +83,4 @@ const CreateImageForm = ({ onClose }) => {
   );
 };
 
-export default CreateImageForm;
+export default UpdateImageForm;
