@@ -19,6 +19,19 @@
     text-shadow: 1px 1px 2px rgb(97, 97, 97);
 }
 
+.postBtn {
+    color: #fff;
+    cursor: pointer;
+    font-size: 30px;
+    margin-right: 25px;
+    transition: all .15s ease-in-out;
+}
+
+.postBtn:hover {
+    color: #deb6ff;
+    text-shadow: 1px 1px 2px rgb(97, 97, 97);
+}
+
 .profile-button {
     color: #fff;
     cursor: pointer;

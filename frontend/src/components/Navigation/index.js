@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
+import CreateImageForm from "../CreateImageForm/CreateImageForm";
 import img from "../images/favicon-32x32.png";
 // import "./Navigation.css";
 import { Nav, NavLink, Bars, NavMenu } from "./NavbarElements";
@@ -17,6 +18,9 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
+        <NavLink exact to="/images/new" className="postBtn">
+          <i className="fa-solid fa-circle-plus"></i>
+        </NavLink>
         <ProfileButton user={sessionUser} />
       </>
     );

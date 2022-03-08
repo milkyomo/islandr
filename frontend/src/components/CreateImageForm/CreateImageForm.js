@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
 import { postImage } from "../../store/imageReducer";
 
+import "./CreateImageForm.css";
+
 const CreateImageForm = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
