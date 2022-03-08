@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
 import { postImage } from "../../store/imageReducer";
-
-import "./CreateImageForm.css";
+import img from "../images/favicon-32x32.png";
 
 const CreateImageForm = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -33,19 +32,35 @@ const CreateImageForm = () => {
 
       history.push(`/images/${newImage.id}`);
     }
+
+    // const newImage = await dispatch(postImage(createdImage));
+    // return history.push(`/images/${newImage.id}`);
   };
 
   return (
-    <div>
+    <div className="createimg-container">
+      <div className="loginmodal-container-box">
+        <h1>Create a Post</h1>
+        <img src={img} />
+      </div>
+      <br></br>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          required
-          value={imageUrl}
-          onChange={updatedImageUrl}
-        />
-        <input type="text" value={content} onChange={updatedContent} />
-        <button type="submit">Post Image</button>
+        <label>
+          Image URL
+          <input
+            type="text"
+            required
+            value={imageUrl}
+            onChange={updatedImageUrl}
+          />
+        </label>
+        <label>
+          Add a caption (optional)
+          <input type="text" value={content} onChange={updatedContent} />
+        </label>
+        <button type="submit" className="login loginmodal-submit">
+          Post Image
+        </button>
       </form>
     </div>
   );

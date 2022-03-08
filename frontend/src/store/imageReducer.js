@@ -53,7 +53,7 @@ export const postImage = (data) => async (dispatch) => {
     dispatch(addImage(newImage));
     return newImage;
   } catch (e) {
-    console.log(e);
+    console.log("ERRRRORORORORORS", e);
   }
 };
 
