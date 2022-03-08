@@ -4,7 +4,7 @@ const ExploreDetail = ({ id, imageUrl }) => {
   return (
     <>
       <NavLink to={`/images/${id}`}>
-        <img src={imageUrl}></img>
+        <img src={imageUrl} className="single-image"></img>
       </NavLink>
     </>
   );

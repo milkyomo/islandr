@@ -53,6 +53,7 @@ export const postImage = (data) => async (dispatch) => {
     dispatch(addImage(newImage));
     return newImage;
   } catch (e) {
+    //how to show validation errors?
     console.log("ERRRRORORORORORS", e);
   }
 };

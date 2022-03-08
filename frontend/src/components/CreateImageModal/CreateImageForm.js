@@ -12,6 +12,7 @@ const CreateImageForm = () => {
 
   const [imageUrl, setImageUrl] = useState("");
   const [content, setContent] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const updatedImageUrl = (e) => setImageUrl(e.target.value);
   const updatedContent = (e) => setContent(e.target.value);
@@ -19,19 +20,28 @@ const CreateImageForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setErrors([]);
+
     let createdImage = {
       userId: sessionUser.id,
       imageUrl,
       content,
     };
 
+    return dispatch(postImage(createdImage)).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+      console.log(errors);
+
+      // history.push(`/images/${newImage.id}`);
+    });
     // console.log("CREATED IMAGE ID", createdImage);
 
-    if (createdImage) {
-      const newImage = await dispatch(postImage(createdImage));
+    // if (createdImage) {
+    //   const newImage = await dispatch(postImage(createdImage));
 
-      history.push(`/images/${newImage.id}`);
-    }
+    //   history.push(`/images/${newImage.id}`);
+    // }
 
     // const newImage = await dispatch(postImage(createdImage));
     // return history.push(`/images/${newImage.id}`);
@@ -45,6 +55,11 @@ const CreateImageForm = () => {
       </div>
       <br></br>
       <form onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
         <label>
           Image URL
           <input

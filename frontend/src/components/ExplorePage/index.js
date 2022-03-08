@@ -14,12 +14,15 @@ export default function ExplorePage() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Explore Page</h1>
-      <div>
-        {images.map(({ id, imageUrl }) => (
-          <ExploreDetail key={id} id={id} imageUrl={imageUrl} />
-        ))}
+    <div className="explore-page-container">
+      <h1>Get Inspired</h1>
+      <div className="images">
+        {images
+          .slice(0)
+          .reverse()
+          .map(({ id, imageUrl }) => (
+            <ExploreDetail key={id} id={id} imageUrl={imageUrl} />
+          ))}
       </div>
     </div>
   );
