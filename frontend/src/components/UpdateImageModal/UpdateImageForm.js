@@ -60,21 +60,24 @@ const UpdateImageForm = ({ image, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setErrors([]);
-
     let updatedImage = {
       id: params.id,
       imageUrl,
       content,
     };
     // console.log("ONCLOSE", onClose);
+
+    setErrors([]);
     dispatch(updateImage(updatedImage)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
-      console.log(errors);
+      // console.log(errors);
     });
-    onClose();
-    // history.push(`/images/${params.id}`);
+
+    if (!errors) {
+      onClose();
+      // history.push(`/images/${params.id}`);
+    }
   };
 
   return (

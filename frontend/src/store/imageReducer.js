@@ -44,46 +44,41 @@ export const fetchImage = (imageId) => async (dispatch) => {
 
 //thunk creator for POST image request
 export const postImage = (data) => async (dispatch) => {
-  try {
-    const res = await csrfFetch("/api/images/new", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+  const res = await csrfFetch("/api/images/new", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const newImage = await res.json();
-    // console.log("THUNK NEW IMAGE: ", newImage);
-    dispatch(addImage(newImage));
-    return newImage;
-  } catch (e) {
-    //how to show validation errors?
-    console.log(e);
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
   }
+  const newImage = await res.json();
+  // console.log("THUNK NEW IMAGE: ", newImage);
+  dispatch(addImage(newImage));
+  return newImage;
 };
 
 //thunk creator for UPDATE image request
 export const updateImage = (data) => async (dispatch) => {
   const imageId = data.id;
-  try {
-    const res = await csrfFetch(`/api/images/${imageId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+  // try {
+  const res = await csrfFetch(`/api/images/${imageId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const updatedImage = await res.json();
-    console.log("UPDATAPTUAEPJDG IMAGE", updatedImage);
-    dispatch(loadImage(updatedImage));
-    return updateImage;
-  } catch (e) {
-    console.log(e);
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
   }
+  const updatedImage = await res.json();
+  console.log("UPDATAPTUAEPJDG IMAGE", updatedImage);
+  dispatch(loadImage(updatedImage));
+  return updateImage;
+  // } catch (e) {
+  //   console.log(e);
+  // }
 };
 
 //thunk creator for REMOVE image request

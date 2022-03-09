@@ -8,12 +8,22 @@ const {
 } = require("../../utils/auth");
 
 // const { User } = require("../../db/models");
-const imageValidations = require("../../utils/validateImage");
+// const imageValidations = require("../../utils/validateImage");
 
 const db = require("../../db/models");
 // const { User, Image, Comment } = db;
 
 const router = express.Router();
+
+const { check } = require("express-validator");
+const { handleValidationErrors } = require("../../utils/validation");
+const validateImage = [
+  check("imageUrl")
+    .notEmpty()
+    .isURL({ require_protocol: false, require_host: false })
+    .withMessage("Please provide a valid URL"),
+  handleValidationErrors,
+];
 
 //explore
 router.get(
@@ -46,9 +56,11 @@ router.get(
 router.post(
   "/new",
   requireAuth,
-  imageValidations.validateCreate,
+  validateImage,
   asyncHandler(async (req, res) => {
-    const image = await db.Image.create(req.body);
+    console.log("this is req.body", req.body);
+    const { id, userId, imageUrl, content } = req.body;
+    const image = await db.Image.create({ id, userId, imageUrl, content });
     console.log("IMAGE POST", image);
     return res.json(image);
   })
@@ -58,7 +70,7 @@ router.post(
 router.put(
   "/:id",
   requireAuth,
-  imageValidations.validateCreate,
+  validateImage,
   asyncHandler(async function (req, res) {
     const { id, imageUrl, content } = req.body;
     // console.log("REQ.BODY", id);

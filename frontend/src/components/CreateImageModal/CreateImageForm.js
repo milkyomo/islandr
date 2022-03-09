@@ -20,7 +20,7 @@ const CreateImageForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setErrors([]);
+    // setErrors([]);
 
     let createdImage = {
       userId: sessionUser.id,
@@ -28,16 +28,21 @@ const CreateImageForm = ({ onClose }) => {
       content,
     };
 
+    setErrors([]);
     const newImage = await dispatch(postImage(createdImage)).catch(
       async (res) => {
         const data = await res.json();
+        // console.log("this is data: ", data);
         if (data && data.errors) setErrors(data.errors);
-        console.log(errors);
+        // console.log(errors);
       }
     );
 
-    onClose();
-    history.push(`/images/${newImage.id}`);
+    if (!errors) {
+      onClose();
+      history.push(`/images/${newImage.id}`);
+    }
+
     // console.log("CREATED IMAGE ID", createdImage);
 
     // if (createdImage) {
@@ -67,7 +72,7 @@ const CreateImageForm = ({ onClose }) => {
           Image URL
           <input
             type="text"
-            required
+            required={true}
             value={imageUrl}
             onChange={updatedImageUrl}
           />

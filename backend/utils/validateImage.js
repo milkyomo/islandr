@@ -1,15 +1,11 @@
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("./validation");
 
-const id = check("id")
-  .notEmpty()
-  .withMessage("cannot be empty")
-  .isInt({ min: 0 });
 const imageUrl = check("imageUrl")
   .notEmpty()
-  .withMessage("Please provide a valid URL")
-  .isURL({ require_protocol: false, require_host: false });
+  .isURL({ require_protocol: false, require_host: false })
+  .withMessage("Please provide a valid URL");
 
 exports.validateCreate = [imageUrl, handleValidationErrors];
 
-exports.validateUpdate = [id, imageUrl, handleValidationErrors];
+exports.validateUpdate = [imageUrl, handleValidationErrors];
