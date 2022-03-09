@@ -40,7 +40,7 @@ const ImageDetail = function () {
       <div className="single-image-detail-container">
         <img src={image?.imageUrl}></img>
         <h1>Posted by {image?.User?.username}</h1>
-        <p>"{image?.content}"</p>
+        <p>{image?.content}</p>
         <div>
           {sessionUser?.id === image?.userId ? (
             <UpdateImageFormModal image={image} />
