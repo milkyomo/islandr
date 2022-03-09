@@ -41,7 +41,7 @@ const ImageDetail = function () {
         <h1>Posted by {image?.User?.username}</h1>
         <p>"{image?.content}"</p>
         <div>
-          {sessionUser.id === image?.userId ? (
+          {sessionUser?.id === image?.userId ? (
             <UpdateImageFormModal image={image} />
           ) : (
             <></>
