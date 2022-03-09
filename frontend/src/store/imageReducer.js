@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_IMAGES = "images/loadImages";
 const LOAD_IMAGE = "images/loadImage";
 const ADD_IMAGE = "images/addImage";
+const REMOVE_IMAGE = "images/removeImage";
 
 export const loadImages = (images) => {
   return { type: LOAD_IMAGES, images };
@@ -15,6 +16,11 @@ export const loadImage = (image) => {
 export const addImage = (newImage) => ({
   type: ADD_IMAGE,
   newImage,
+});
+
+export const removeImage = (imageId) => ({
+  type: REMOVE_IMAGE,
+  imageId,
 });
 
 //thunk creator for GET ALL request
@@ -80,6 +86,16 @@ export const updateImage = (data) => async (dispatch) => {
   }
 };
 
+//thunk creator for REMOVE image request
+export const deleteImage = (imageId) => async (dispatch) => {
+  console.log("HEY", imageId);
+  const res = await csrfFetch(`/api/images/${imageId}`, {
+    method: "DELETE",
+  });
+  const deletedImage = await res.json();
+  dispatch(removeImage(deletedImage.id));
+};
+
 export const initialState = { entries: {}, isLoading: true };
 
 const imageReducer = (state = initialState, action) => {
@@ -114,6 +130,9 @@ const imageReducer = (state = initialState, action) => {
     //     ...action.newImage,
     //   },
     // };
+    case REMOVE_IMAGE:
+      delete newState[action.imageId];
+      return newState;
     default:
       return state;
   }

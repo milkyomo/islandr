@@ -26,7 +26,7 @@ const ImageDetail = function () {
   useEffect(() => {
     dispatch(fetchImage(imageId));
   }, [dispatch, imageId]);
-  console.log("message and image id:::", imageId);
+  // console.log("message and image id:::", imageId);
 
   // if (sessionUser.id === image.userId) {
   //   return <h1> HEY THERE SUMMONER ! </h1>;

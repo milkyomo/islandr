@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams, Redirect } from "react-router-dom";
-import { fetchImage, updateImage } from "../../store/imageReducer";
+import { fetchImage, updateImage, deleteImage } from "../../store/imageReducer";
 import img from "../images/favicon-32x32.png";
 
 const UpdateImageForm = ({ image, onClose }) => {
@@ -79,6 +79,14 @@ const UpdateImageForm = ({ image, onClose }) => {
           Post Image
         </button>
       </form>
+      <button
+        onClick={() => {
+          dispatch(deleteImage(params.id));
+          history.push("/explore");
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 };

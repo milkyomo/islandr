@@ -89,4 +89,25 @@ router.put(
   })
 );
 
+router.delete(
+  "/:id",
+  requireAuth,
+  asyncHandler(async function (req, res) {
+    const imageId = parseInt(req.params.id, 10);
+    const image = await db.Image.findOne({
+      where: {
+        id: imageId,
+      },
+    });
+    if (!image) throw new Error("Cannot find image!");
+
+    await db.Image.destroy({
+      where: {
+        id: imageId,
+      },
+    });
+    return res.json(image.id);
+  })
+);
+
 module.exports = router;
