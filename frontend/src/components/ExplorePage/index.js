@@ -17,12 +17,9 @@ export default function ExplorePage() {
     <div className="explore-page-container">
       <h1>Get Inspired</h1>
       <div className="images">
-        {images
-          .slice(0)
-          .reverse()
-          .map(({ id, imageUrl }) => (
-            <ExploreDetail key={id} id={id} imageUrl={imageUrl} />
-          ))}
+        {images.reverse().map(({ id, imageUrl }) => (
+          <ExploreDetail key={id} id={id} imageUrl={imageUrl} />
+        ))}
       </div>
     </div>
   );

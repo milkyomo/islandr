@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams, Redirect } from "react-router-dom";
-import { fetchImage, updateImage, deleteImage } from "../../store/imageReducer";
+import {
+  fetchImage,
+  updateImage,
+  deleteImage,
+  fetchImages,
+} from "../../store/imageReducer";
 import img from "../images/favicon-32x32.png";
 
 const UpdateImageForm = ({ image, onClose }) => {
@@ -13,6 +18,8 @@ const UpdateImageForm = ({ image, onClose }) => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [stateHistory, setStateHistory] = useState(useHistory());
 
   const [imageUrl, setImageUrl] = useState(imageToUpdate.imageUrl);
   const [content, setContent] = useState(imageToUpdate.content);
@@ -28,6 +35,16 @@ const UpdateImageForm = ({ image, onClose }) => {
   useEffect(() => {
     dispatch(fetchImage(params));
   }, [dispatch]);
+
+  useEffect(() => {
+    console.log(`Successfully pushed to ${stateHistory}!`);
+  }, [stateHistory]);
+
+  const redirectToExplore = (stateHistory) => {
+    console.log(`redirecting to explore`);
+    stateHistory.push("/explore");
+    setStateHistory({ ...stateHistory });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -82,6 +99,8 @@ const UpdateImageForm = ({ image, onClose }) => {
       <button
         onClick={() => {
           dispatch(deleteImage(params.id));
+          dispatch(fetchImages());
+          // redirectToExplore(stateHistory);
           history.push("/explore");
         }}
       >
