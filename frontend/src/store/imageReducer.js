@@ -93,7 +93,8 @@ export const deleteImage = (imageId) => async (dispatch) => {
     method: "DELETE",
   });
   const deletedImage = await res.json();
-  dispatch(removeImage(imageId));
+  dispatch(removeImage(deletedImage));
+  return deletedImage;
 };
 
 export const initialState = { entries: {}, isLoading: true };
@@ -132,12 +133,12 @@ const imageReducer = (state = initialState, action) => {
     //   },
     // };
     case REMOVE_IMAGE:
-      console.log("NEWSTATE1", newState);
-      delete newState[action.imageId];
+      // console.log("NEWSTATE1", newState);
+      // delete newState[action.imageId];
       delete newState.entries[action.imageId];
-      delete newState.current;
-      console.log("NEWSTATE2", newState);
-      console.log(action.imageId);
+      // delete newState.current;
+      // console.log("NEWSTATE2", newState);
+      // console.log(action.imageId);
       return newState;
     default:
       return state;

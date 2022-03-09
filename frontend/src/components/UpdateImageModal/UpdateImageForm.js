@@ -6,6 +6,7 @@ import {
   updateImage,
   deleteImage,
   fetchImages,
+  removeImage,
 } from "../../store/imageReducer";
 import img from "../images/favicon-32x32.png";
 
@@ -19,7 +20,7 @@ const UpdateImageForm = ({ image, onClose }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [stateHistory, setStateHistory] = useState(useHistory());
+  // const [stateHistory, setStateHistory] = useState(useHistory());
 
   const [imageUrl, setImageUrl] = useState(imageToUpdate.imageUrl);
   const [content, setContent] = useState(imageToUpdate.content);
@@ -36,14 +37,24 @@ const UpdateImageForm = ({ image, onClose }) => {
     dispatch(fetchImage(params));
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log(`Successfully pushed to ${stateHistory}!`);
-  }, [stateHistory]);
+  // useEffect(() => {
+  //   console.log(`Successfully pushed to ${stateHistory}!`);
+  // }, [stateHistory]);
 
-  const redirectToExplore = (stateHistory) => {
-    console.log(`redirecting to explore`);
-    stateHistory.push("/explore");
-    setStateHistory({ ...stateHistory });
+  // const redirectToExplore = (stateHistory) => {
+  //   console.log(`redirecting to explore`);
+  //   stateHistory.push("/explore");
+  //   setStateHistory({ ...stateHistory });
+  // };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    let res = await dispatch(deleteImage(params.id));
+    // dispatch(fetchImages());
+    if (res) {
+      history.push("/explore");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -97,11 +108,8 @@ const UpdateImageForm = ({ image, onClose }) => {
         </button>
       </form>
       <button
-        onClick={() => {
-          dispatch(deleteImage(params.id));
-          dispatch(fetchImages());
-          // redirectToExplore(stateHistory);
-          history.push("/explore");
+        onClick={(e) => {
+          handleDelete(e);
         }}
       >
         Delete

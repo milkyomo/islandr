@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import UpdateImageFormModal from "../UpdateImageModal";
+import Comments from "../Comments";
 import { fetchImage } from "../../store/imageReducer";
 import "./ImageDetail.css";
 
@@ -46,6 +47,9 @@ const ImageDetail = function () {
           ) : (
             <></>
           )}
+        </div>
+        <div>
+          <Comments image={image} />
         </div>
       </div>
       {/* ) : (
