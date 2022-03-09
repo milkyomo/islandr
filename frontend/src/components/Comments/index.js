@@ -5,7 +5,7 @@ const Comments = function ({ image }) {
   console.log(image);
   return (
     <div>
-      <h1>h1</h1>
+      <h1>COMMENTS WILL GO HERE BETCHHHH</h1>
     </div>
   );
 };
