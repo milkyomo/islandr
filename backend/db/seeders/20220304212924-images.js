@@ -66,6 +66,14 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          userId: 1,
+          imageUrl:
+            "https://media.distractify.com/brand-img/d_gDZYPEl/0x0/acnh-fireworks-1596579566623.jpeg",
+          content: "I wanna do this on my own island",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
