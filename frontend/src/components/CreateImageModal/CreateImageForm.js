@@ -76,7 +76,11 @@ const CreateImageForm = ({ onClose }) => {
           Add a caption (optional)
           <input type="text" value={content} onChange={updatedContent} />
         </label>
-        <button type="submit" className="login loginmodal-submit">
+        <button
+          type="submit"
+          className="login loginmodal-submit"
+          name="image-text-box"
+        >
           Post Image
         </button>
       </form>

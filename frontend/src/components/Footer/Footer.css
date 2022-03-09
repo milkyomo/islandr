@@ -19,8 +19,8 @@
     bottom: 0;
     color: rgba(129, 129, 129, 0.678); */
     float: right;
-    width: 300px;
-    font-size: 20px;
+    width: 150px;
+    font-size: 25px;
     display: flex;
     justify-content: space-between;
     margin-left: 50px;

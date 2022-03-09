@@ -8,10 +8,14 @@ const Footer = () => (
       <p>Express</p>
       <p>JavaScript</p>
       <p>Sequelize</p> */}
-      <a href="https://www.linkedin.com/in/sharonfang8/">linkedin</a>
-      <a href="https://github.com/milkyomo">github</a>
+      <a href="https://www.linkedin.com/in/sharonfang8/">
+        <i className="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/milkyomo">
+        <i className="fa-brands fa-github"></i>
+      </a>
       <a href="https://www.reddit.com/r/AnimalCrossing/comments/foeiwf/new_horizons_dock_design_at_night_nook_island_in/">
-        background
+        <i className="fa-solid fa-image"></i>
       </a>
     </footer>
   </div>
