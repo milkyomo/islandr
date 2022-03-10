@@ -70,7 +70,7 @@ router.post(
     // console.log("this is req.body", req.body);
     const { id, userId, imageUrl, content } = req.body;
     const image = await db.Image.create({ id, userId, imageUrl, content });
-    console.log("IMAGE POST", image);
+    // console.log("IMAGE POST", image);
     return res.json(image);
   })
 );
@@ -78,9 +78,10 @@ router.post(
 //update picture
 router.put(
   "/:id",
-  requireAuth,
+  // requireAuth,
   validateImage,
   asyncHandler(async function (req, res) {
+    console.log("this is backend req:", req.body);
     const { id, imageUrl, content } = req.body;
     // console.log("REQ.BODY", id);
     // const updatedImage = await db.Image.update(req.body);
@@ -90,9 +91,10 @@ router.put(
         where: {
           id,
         },
-        include: {
-          model: db.User,
-        },
+        // include: {
+        //   model: db.User,
+        //   attributes: ["username"],
+        // },
         returning: true,
       }
     );
@@ -100,9 +102,21 @@ router.put(
       where: {
         id,
       },
-      include: {
-        model: db.User,
-      },
+      include: [
+        {
+          model: db.User,
+          attributes: ["username"],
+        },
+        {
+          model: db.Comment,
+          include: [
+            {
+              model: db.User,
+              attributes: ["username"],
+            },
+          ],
+        },
+      ],
     });
     // console.log("IMAGE HERE:::", image);
     // console.log("IMAGE KEYING INTO HERE:::", image[1][0]);
@@ -122,14 +136,7 @@ router.delete(
     });
     if (!image) throw new Error("Cannot find image!");
 
-    await db.Image.destroy({
-      where: {
-        id: imageId,
-      },
-      include: {
-        model: db.Comment,
-      },
-    });
+    await image.destroy();
     return res.json(image.id);
   })
 );

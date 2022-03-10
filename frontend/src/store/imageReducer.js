@@ -55,14 +55,14 @@ export const postImage = (data) => async (dispatch) => {
     throw new Error(`HTTP error! status: ${res.status}`);
   }
   const newImage = await res.json();
-  console.log("THUNK NEW IMAGE: ", newImage);
+  // console.log("THUNK NEW IMAGE: ", newImage);
   dispatch(addImage(newImage));
   return newImage;
 };
 
 //thunk creator for UPDATE image request
-export const updateImage = (data) => async (dispatch) => {
-  const imageId = data.id;
+export const updateImage = (imageId, data) => async (dispatch) => {
+  console.log("AM I IN UPDATEIMAGE THUNK?", data);
   // try {
   const res = await csrfFetch(`/api/images/${imageId}`, {
     method: "PUT",
@@ -70,11 +70,12 @@ export const updateImage = (data) => async (dispatch) => {
     body: JSON.stringify(data),
   });
 
+  console.log("AM I IN UPDATEIMAGE THUNK DEEPER?", res);
   if (!res.ok) {
     throw new Error(`HTTP error! status: ${res.status}`);
   }
   const updatedImage = await res.json();
-  console.log("UPDATAPTUAEPJDG IMAGE", updatedImage);
+  // console.log("UPDATAPTUAEPJDG IMAGE", updatedImage);
   dispatch(loadImage(updatedImage));
   return updateImage;
   // } catch (e) {
@@ -84,13 +85,17 @@ export const updateImage = (data) => async (dispatch) => {
 
 //thunk creator for REMOVE image request
 export const deleteImage = (imageId) => async (dispatch) => {
-  console.log("HEY", imageId);
-  const res = await csrfFetch(`/api/images/${imageId}`, {
-    method: "DELETE",
-  });
-  const deletedImage = await res.json();
-  dispatch(removeImage(deletedImage));
-  return deletedImage;
+  // console.log("HEY", imageId);
+  try {
+    const res = await csrfFetch(`/api/images/${imageId}`, {
+      method: "DELETE",
+    });
+    const deletedImage = await res.json();
+    dispatch(removeImage(deletedImage));
+    return deletedImage;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 //COMMENTSSSSSSSSSSSSSSS
@@ -103,7 +108,7 @@ export const addComment = (comment) => ({
 
 //thunk creator for POST comment
 export const postComment = (data) => async (dispatch) => {
-  // console.log("THIS IS postComment DATA: ", data);
+  console.log("THIS IS postComment DATA: ", data);
   const res = await csrfFetch("/api/comment/new", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -114,8 +119,30 @@ export const postComment = (data) => async (dispatch) => {
     throw new Error(`HTTP error! status: ${res.status}`);
   }
   const newComment = await res.json();
+  console.log("this is postComment new Comment: ", newComment);
   dispatch(addComment(newComment));
   return newComment;
+};
+
+export const REMOVE_COMMENT = "images/REMOVE_COMMENT";
+
+export const removeComment = (comment) => ({
+  type: REMOVE_COMMENT,
+  comment,
+});
+//thunk creator for DELETE comment
+export const deleteComment = (commentId) => async (dispatch) => {
+  // console.log("this is delete commentId: ", commentId);
+  try {
+    const res = await csrfFetch(`/api/comment/${commentId}`, {
+      method: "DELETE",
+    });
+    const deletedComment = await res.json();
+    dispatch(removeComment(deletedComment));
+    return deletedComment;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const initialState = { entries: {}, isLoading: true };
@@ -125,7 +152,7 @@ const imageReducer = (state = initialState, action) => {
   let newEntries;
   switch (action.type) {
     case LOAD_IMAGES:
-      console.log("ACTION.IMAGES", action.images);
+      // console.log("ACTION.IMAGES", action.images);
       newEntries = {};
       action.images.forEach((image) => (newEntries[image.id] = image));
       newState.entries = newEntries;
@@ -135,6 +162,8 @@ const imageReducer = (state = initialState, action) => {
       // newEntries[action.image?.id] = action.image;
       // newState.entries = newEntries;
       newState.current = action.image;
+      console.log("THIS IS NEWSTATE.CURRENT LOAD: ", newState.current);
+      // console.log("THIS IS NEWSTATE LOAD: ", newState);
       return newState;
     case ADD_IMAGE:
       // if (!state[action.newImage.id]) {
@@ -143,7 +172,11 @@ const imageReducer = (state = initialState, action) => {
       //     // [action.newImage.id]: action.newImage,
       //     newImage: action.newImage,
       //   };
-      newState.current = action.image;
+      // console.log("newState.entries before: ", newState.entries);
+      // newState.current = action.newImage;
+      // newState.entries[action.newImage.id] = action.newImage;
+      newState.entries[action.newImage.id] = action.newImage;
+      // console.log("newState.entries after: ", newState.entries);
       return newState;
     // }
     // return {
@@ -163,7 +196,13 @@ const imageReducer = (state = initialState, action) => {
       return newState;
     case ADD_COMMENT:
       // console.log("THIS IS ACTION.COMMENT: ", action.comment);
+      // console.log("THIS IS ACTION COMMENT: ", newState.current);
       newState.current.Comments[action.comment.id] = action.comment;
+      return newState;
+    case REMOVE_COMMENT:
+      // console.log("THIS IS ACTION", action.comment);
+      // console.log("THIS IS NEWSTATE.ENTRIES: ", newState.current.Comments[action.comment]);
+      delete newState.current.Comments[action.comment.id];
       return newState;
     default:
       return state;

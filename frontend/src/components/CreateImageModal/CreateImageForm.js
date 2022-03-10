@@ -12,7 +12,7 @@ const CreateImageForm = ({ onClose }) => {
 
   const [imageUrl, setImageUrl] = useState("");
   const [content, setContent] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState("");
 
   const updatedImageUrl = (e) => setImageUrl(e.target.value);
   const updatedContent = (e) => setContent(e.target.value);
@@ -27,20 +27,22 @@ const CreateImageForm = ({ onClose }) => {
       imageUrl,
       content,
     };
-    console.log("THIS IS CREATEDIMAGE: ", createdImage);
+    // console.log("THIS IS CREATEDIMAGE: ", createdImage);
 
-    setErrors([]);
+    setErrors("");
     const newImage = await dispatch(postImage(createdImage)).catch(
       async (res) => {
+        // console.log("am i here ?");
         const data = await res.json();
         // console.log("this is data: ", data);
         if (data && data.errors) setErrors(data.errors);
-        console.log("ERRORS NEWIMAGE:", errors);
+        console.log("Create Errors: ", data.errors);
       }
     );
 
-    if (!errors) {
-      console.log("THIS IS newImage.id", newImage.id);
+    if (newImage.id) {
+      // console.log("does this even matter");
+      // console.log("This is newImage.id", newImage.id);
       onClose();
       history.push(`/images/${newImage.id}`);
     }
@@ -66,9 +68,10 @@ const CreateImageForm = ({ onClose }) => {
       <br></br>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
+          {/* {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
-          ))}
+          ))} */}
+          {errors}
         </ul>
         <label>
           Image URL

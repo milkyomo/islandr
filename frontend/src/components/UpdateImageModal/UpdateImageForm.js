@@ -7,6 +7,7 @@ import {
   deleteImage,
   fetchImages,
   removeImage,
+  loadImage,
 } from "../../store/imageReducer";
 import img from "../images/favicon-32x32.png";
 
@@ -34,7 +35,7 @@ const UpdateImageForm = ({ image, onClose }) => {
   //   console.log(id);
 
   useEffect(() => {
-    dispatch(fetchImage(params));
+    dispatch(fetchImage(image));
   }, [dispatch]);
 
   // useEffect(() => {
@@ -50,7 +51,7 @@ const UpdateImageForm = ({ image, onClose }) => {
   const handleDelete = async (e) => {
     e.preventDefault();
 
-    let res = await dispatch(deleteImage(params.id));
+    let res = await dispatch(deleteImage(image.id));
     // dispatch(fetchImages());
     if (res) {
       history.push("/explore");
@@ -61,22 +62,23 @@ const UpdateImageForm = ({ image, onClose }) => {
     e.preventDefault();
 
     let updatedImage = {
-      id: params.id,
+      id: image.id,
       imageUrl,
       content,
     };
     // console.log("ONCLOSE", onClose);
 
     setErrors([]);
-    dispatch(updateImage(updatedImage)).catch(async (res) => {
+    dispatch(updateImage(params.id, updatedImage)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
-      // console.log(errors);
     });
 
-    if (!errors) {
+    if (!errors.length) {
+      // console.log("HELLO???");
       onClose();
       // history.push(`/images/${params.id}`);
+      // dispatch(fetchImage(image.id));
     }
   };
 
