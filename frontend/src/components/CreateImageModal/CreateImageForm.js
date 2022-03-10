@@ -27,6 +27,7 @@ const CreateImageForm = ({ onClose }) => {
       imageUrl,
       content,
     };
+    console.log("THIS IS CREATEDIMAGE: ", createdImage);
 
     setErrors([]);
     const newImage = await dispatch(postImage(createdImage)).catch(
@@ -34,11 +35,12 @@ const CreateImageForm = ({ onClose }) => {
         const data = await res.json();
         // console.log("this is data: ", data);
         if (data && data.errors) setErrors(data.errors);
-        // console.log(errors);
+        console.log("ERRORS NEWIMAGE:", errors);
       }
     );
 
     if (!errors) {
+      console.log("THIS IS newImage.id", newImage.id);
       onClose();
       history.push(`/images/${newImage.id}`);
     }

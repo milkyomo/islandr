@@ -126,6 +126,9 @@ router.delete(
       where: {
         id: imageId,
       },
+      include: {
+        model: db.Comment,
+      },
     });
     return res.json(image.id);
   })

@@ -55,7 +55,7 @@ export const postImage = (data) => async (dispatch) => {
     throw new Error(`HTTP error! status: ${res.status}`);
   }
   const newImage = await res.json();
-  // console.log("THUNK NEW IMAGE: ", newImage);
+  console.log("THUNK NEW IMAGE: ", newImage);
   dispatch(addImage(newImage));
   return newImage;
 };
@@ -94,7 +94,7 @@ export const deleteImage = (imageId) => async (dispatch) => {
 };
 
 //COMMENTSSSSSSSSSSSSSSS
-export const ADD_COMMENT = "comments/ADD_COMMENT";
+export const ADD_COMMENT = "images/ADD_COMMENT";
 
 export const addComment = (comment) => ({
   type: ADD_COMMENT,
@@ -162,7 +162,7 @@ const imageReducer = (state = initialState, action) => {
       // console.log(action.imageId);
       return newState;
     case ADD_COMMENT:
-      console.log("THIS IS ACTION.COMMENT: ", action.comment);
+      // console.log("THIS IS ACTION.COMMENT: ", action.comment);
       newState.current.Comments[action.comment.id] = action.comment;
       return newState;
     default:
