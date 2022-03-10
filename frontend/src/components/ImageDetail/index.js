@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import UpdateImageFormModal from "../UpdateImageModal";
-import Comments from "../Comments";
+import AllComments from "../Comments";
 import { fetchImage } from "../../store/imageReducer";
+import CreateCommentModal from "../Comments/CreateCommentModal";
 import "./ImageDetail.css";
 
 const ImageDetail = function () {
@@ -16,13 +17,15 @@ const ImageDetail = function () {
   //   //postCommentBtn leads to login modal form?????????
   // }
 
-  const history = useHistory();
-
   const dispatch = useDispatch();
   const imageId = useParams();
 
   const imageObject = useSelector((state) => state.imageState);
   const image = imageObject.current;
+  // console.log("IMAGE COMPONENT:", imageObject.current.Comments);
+  // const comments = imageObject.current.Comments; //array of objects ;)
+  // console.log("THESE ARE THE COMMENTS", comments);
+  // console.log("username?", imageObject);
 
   useEffect(() => {
     dispatch(fetchImage(imageId));
@@ -49,7 +52,9 @@ const ImageDetail = function () {
           )}
         </div>
         <div>
-          <Comments image={image} />
+          {/* {sessionUser?.id ? <h1>HEY BITCH</h1> : <></>} */}
+          {sessionUser?.id ? <CreateCommentModal image={image} /> : <></>}
+          <AllComments image={image} />
         </div>
       </div>
       {/* ) : (

@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 
+//IMAGESSSSSSSSs
 const LOAD_IMAGES = "images/loadImages";
 const LOAD_IMAGE = "images/loadImage";
 const ADD_IMAGE = "images/addImage";
@@ -92,6 +93,31 @@ export const deleteImage = (imageId) => async (dispatch) => {
   return deletedImage;
 };
 
+//COMMENTSSSSSSSSSSSSSSS
+export const ADD_COMMENT = "comments/ADD_COMMENT";
+
+export const addComment = (comment) => ({
+  type: ADD_COMMENT,
+  comment,
+});
+
+//thunk creator for POST comment
+export const postComment = (data) => async (dispatch) => {
+  // console.log("THIS IS postComment DATA: ", data);
+  const res = await csrfFetch("/api/comment/new", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+  const newComment = await res.json();
+  dispatch(addComment(newComment));
+  return newComment;
+};
+
 export const initialState = { entries: {}, isLoading: true };
 
 const imageReducer = (state = initialState, action) => {
@@ -134,6 +160,10 @@ const imageReducer = (state = initialState, action) => {
       // delete newState.current;
       // console.log("NEWSTATE2", newState);
       // console.log(action.imageId);
+      return newState;
+    case ADD_COMMENT:
+      console.log("THIS IS ACTION.COMMENT: ", action.comment);
+      newState.current.Comments[action.comment.id] = action.comment;
       return newState;
     default:
       return state;

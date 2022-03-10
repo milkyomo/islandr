@@ -1,11 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 
-const {
-  setTokenCookie,
-  restoreUser,
-  requireAuth,
-} = require("../../utils/auth");
+const { requireAuth } = require("../../utils/auth");
 
 // const { User } = require("../../db/models");
 // const imageValidations = require("../../utils/validateImage");
@@ -21,7 +17,7 @@ const validateImage = [
   check("imageUrl")
     .notEmpty()
     .isURL({ require_protocol: false, require_host: false })
-    .withMessage("Please provide a valid URL"),
+    .withMessage("Please provide a valid URL, bestie!"),
   handleValidationErrors,
 ];
 
@@ -43,11 +39,24 @@ router.get(
       where: {
         id: imageId,
       },
-      include: {
-        model: db.User,
-      },
+      include: [
+        {
+          model: db.User,
+          attributes: ["username"],
+        },
+        {
+          model: db.Comment,
+          include: [
+            {
+              model: db.User,
+              attributes: ["username"],
+            },
+          ],
+        },
+      ],
     });
 
+    // console.log("IMAGE GET", image.Comments);
     return res.json(image);
   })
 );
@@ -58,7 +67,7 @@ router.post(
   requireAuth,
   validateImage,
   asyncHandler(async (req, res) => {
-    console.log("this is req.body", req.body);
+    // console.log("this is req.body", req.body);
     const { id, userId, imageUrl, content } = req.body;
     const image = await db.Image.create({ id, userId, imageUrl, content });
     console.log("IMAGE POST", image);
