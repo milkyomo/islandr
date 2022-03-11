@@ -78,7 +78,7 @@ router.post(
 //update picture
 router.put(
   "/:id",
-  // requireAuth,
+  requireAuth,
   validateImage,
   asyncHandler(async function (req, res) {
     console.log("this is backend req:", req.body);
