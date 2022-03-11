@@ -203,10 +203,10 @@ const imageReducer = (state = initialState, action) => {
     case REMOVE_COMMENT:
       // console.log("THIS IS ACTION", action.comment);
       // console.log("THIS IS NEWSTATE.ENTRIES: ", newState.current.Comments[action.comment]);
-      // console.log(
-      //   "AM I REMOVING COMMENT????",
-      //   newState.current.Comments[action.comment].id
-      // );
+      console.log(
+        "AM I REMOVING COMMENT????",
+        newState.current.Comments[action.comment]
+      );
       delete newState.current.Comments[action.comment];
       return newState;
     default:
