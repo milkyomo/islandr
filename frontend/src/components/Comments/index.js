@@ -52,6 +52,7 @@ const AllComments = function () {
                 onClick={() => {
                   dispatch(deleteComment(comment?.id));
                 }}
+                className="deleteCommentBtn"
               >
                 <i className="fa-solid fa-trash-can"></i>
               </p>

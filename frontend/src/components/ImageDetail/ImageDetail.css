@@ -23,3 +23,8 @@
     font-size: 15px;
     padding-top: 20px;
 }
+
+.deleteCommentBtn {
+    font-size: 30px;
+    cursor: pointer;
+}
