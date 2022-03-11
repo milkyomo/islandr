@@ -16,6 +16,7 @@ const ImageDetail = function () {
   // } else {
   //   //postCommentBtn leads to login modal form?????????
   // }
+  // const history = useHistory();
 
   const dispatch = useDispatch();
   const imageId = useParams();
@@ -37,32 +38,26 @@ const ImageDetail = function () {
   // }
 
   return (
-    <>
-      {/* >
-      {image ? ( */}
-      <div className="single-image-detail-container">
-        <img src={image?.imageUrl}></img>
-        <h1>Posted by {image?.User?.username}</h1>
-        <p>{image?.content}</p>
-        <div>
+    <div className="single-image-detail-container">
+      <img src={image?.imageUrl}></img>
+      <div className="single-image-right-container">
+        <div className="single-image-information-container">
+          <h1>Posted by {image?.User?.username}</h1>
+          <p>{image?.content}</p>
+          <hr className="single-image-hr"></hr>
           {sessionUser?.id === image?.userId ? (
             <UpdateImageFormModal image={image} />
           ) : (
             <></>
           )}
         </div>
-        <div>
-          {/* {sessionUser?.id ? <h1>HEY BITCH</h1> : <></>} */}
+        <div className="all-comments-container">
+          <h2>Comments</h2>
           {sessionUser?.id ? <CreateCommentModal image={image} /> : <></>}
           <AllComments image={image} />
         </div>
       </div>
-      {/* ) : (
-         // <Redirect to="/where-is-this-place" />
-         history.push("/where-is-this-place")
-       )}
-     </> */}
-    </>
+    </div>
   );
 };
 

@@ -33,14 +33,14 @@ router.post(
   requireAuth,
   validateComment,
   asyncHandler(async (req, res) => {
-    console.log("this is req.body", req.body);
+    // console.log("this is req.body", req.body);
     const { userId, imageId, comment } = req.body;
     const createdComment = await db.Comment.create({
       userId,
       imageId,
       comment,
     });
-    console.log("this is the created comment", createdComment);
+    // console.log("this is the created comment", createdComment);
     const newCreatedComment = await db.Comment.findOne({
       where: {
         id: createdComment.id,
@@ -49,7 +49,7 @@ router.post(
         model: db.User,
       },
     });
-    console.log("newCreatedComment: ", newCreatedComment);
+    // console.log("newCreatedComment: ", newCreatedComment);
     return res.json(newCreatedComment);
   })
 );

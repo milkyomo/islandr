@@ -43,7 +43,7 @@ export const fetchImage = (imageId) => async (dispatch) => {
     a[b.id] = b;
     return a;
   }, {});
-  console.log("image again after: ", image);
+  // console.log("image again after: ", image);
   dispatch(loadImage(image));
   return image;
 };
@@ -204,8 +204,8 @@ const imageReducer = (state = initialState, action) => {
     case ADD_COMMENT:
       // console.log("THIS IS ACTION.COMMENT: ", action.comment);
       // console.log("THIS IS ACTION COMMENT: ", newState.current);
-      console.log("action.comment: ", action.comment);
-      console.log("newState.current.Comments: ", newState.current.Comments);
+      // console.log("action.comment: ", action.comment);
+      // console.log("newState.current.Comments: ", newState.current.Comments);
       const newComments = { ...newState.current.Comments };
       newComments[action.comment.id] = action.comment;
       newState.current.Comments = newComments;

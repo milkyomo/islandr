@@ -7,7 +7,7 @@ function CreateImageFormModal() {
 
   return (
     <>
-      <p onClick={() => setShowModal(true)} className="postBtn">
+      <p onClick={() => setShowModal(true)} className="postImgBtn">
         <i className="fa-solid fa-circle-plus"></i>
       </p>
       {showModal && (

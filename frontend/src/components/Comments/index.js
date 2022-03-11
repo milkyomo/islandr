@@ -41,25 +41,26 @@ const AllComments = function () {
 
   return (
     <div>
-      <h1>Comments</h1>
       <div className="comments">
         {comments &&
           Object.values(comments)
             .sort((a, b) => b.id - a.id)
             .map((comment) => (
-              <div key={"" + comment?.id}>
-                {/* {console.log("THIS IS COMENTS CONSOLE: ", comment.User)}; */}
-                <h1>{comment?.User?.username}</h1>
-                <p>{comment?.comment}</p>
+              <div key={"" + comment?.id} className="individual-comment">
+                <h3 className="individual-comment-user">
+                  {comment?.User?.username}
+                </h3>
+                <p className="individual-comment-comment">{comment?.comment}</p>
                 {sessionUser?.id === comment?.userId && (
-                  <p
-                    onClick={async () => {
-                      await dispatch(deleteComment(comment?.id));
-                    }}
-                    className="deleteCommentBtn"
-                  >
-                    <i className="fa-solid fa-trash-can"></i>
-                  </p>
+                  <div className="deleteCommentBtn">
+                    <p
+                      onClick={async () => {
+                        await dispatch(deleteComment(comment?.id));
+                      }}
+                    >
+                      <i className="fa-solid fa-trash-can"></i>
+                    </p>
+                  </div>
                 )}
               </div>
             ))}
