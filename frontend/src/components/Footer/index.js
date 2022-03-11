@@ -15,7 +15,7 @@ const Footer = () => (
         <i className="fa-brands fa-github"></i>
       </a>
       <a href="https://www.reddit.com/r/AnimalCrossing/comments/foeiwf/new_horizons_dock_design_at_night_nook_island_in/">
-        <i className="fa-solid fa-image"></i>
+        <i className="fa-solid fa-circle-info"></i>
       </a>
     </footer>
   </div>

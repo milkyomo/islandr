@@ -20,7 +20,7 @@ function Slideshow() {
   if (sessionUser) {
     joinTheFunBtn = (
       <a href="/explore" className="landing-button">
-        Join the fun!
+        Let's explore!
       </a>
     );
   } else {
@@ -80,11 +80,23 @@ function Slideshow() {
         </div> */}
       </div>
       <div className="landing-stuff">
-        <h1>Find your inspiration.</h1>
-        <p>
-          Join the islandr community and get inspired for your next Animal
-          Crossing: New Horizon's build.
-        </p>
+        {sessionUser ? (
+          <>
+            <h1>Welcome back, {sessionUser.username}!</h1>
+            <p>
+              How are you feeling today? It's a wonderful day to get inspired!
+              But no rush, take your time :)
+            </p>
+          </>
+        ) : (
+          <>
+            <h1>Find your inspiration.</h1>
+            <p>
+              Join the islandr community and get inspired for your next Animal
+              Crossing: New Horizon's build.
+            </p>
+          </>
+        )}
         {joinTheFunBtn}
       </div>
     </div>
