@@ -53,7 +53,7 @@ const AllComments = function () {
                   dispatch(deleteComment(comment?.id));
                 }}
               >
-                testing
+                <i className="fa-solid fa-trash-can"></i>
               </p>
             )}
           </div>

@@ -8,7 +8,7 @@ function CreateCommentModal({ image }) {
   return (
     <>
       <p onClick={() => setShowModal(true)} className="postBtn">
-        <i className="fa-solid fa-circle-plus"></i>
+        <i className="fa-solid fa-comment-dots"></i>
       </p>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
