@@ -49,8 +49,8 @@ const AllComments = function () {
             <p>{comment?.comment}</p>
             {sessionUser?.id === comment?.userId && (
               <p
-                onClick={() => {
-                  dispatch(deleteComment(comment?.id));
+                onClick={async () => {
+                  await dispatch(deleteComment(comment?.id));
                 }}
                 className="deleteCommentBtn"
               >
