@@ -58,14 +58,15 @@ router.delete(
   "/:id",
   requireAuth,
   asyncHandler(async function (req, res) {
+    // console.log("this is delete api req: ", req);
     const commentId = parseInt(req.params.id, 10);
-    console.log("this is commentId: ", commentId);
+    // console.log("this is commentId: ", commentId);
     const comment = await db.Comment.findOne({
       where: {
         id: commentId,
       },
     });
-    console.log("this is comment to delete: ", comment);
+    // console.log("this is comment to delete: ", comment);
     if (!comment) throw new Error("Cannot find comment!");
     // if (!comment) console.log("what is wrong?");
 

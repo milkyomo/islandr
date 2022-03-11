@@ -22,6 +22,13 @@ const AllComments = function () {
   }, [dispatch, imageId]);
 
   const comments = image?.Comments;
+
+  // const handleDelete = async (e, commentId) => {
+  //   e.preventDefault();
+
+  //   await dispatch(deleteComment(commentId));
+  // };
+
   // console.log("COMMENT USER?", comments);
   // console.log("COMMENT IMAGE : ", image);
 
@@ -36,7 +43,8 @@ const AllComments = function () {
       <h1>Comments</h1>
       <div className="comments">
         {comments?.reverse().map((comment) => (
-          <div key={comment.id}>
+          <div key={"" + comment?.id}>
+            {/* {console.log("THIS IS COMENTS CONSOLE: ", comment.User)}; */}
             <h1>{comment?.User?.username}</h1>
             <p>{comment?.comment}</p>
             {sessionUser?.id === comment?.userId && (

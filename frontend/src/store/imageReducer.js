@@ -137,9 +137,10 @@ export const deleteComment = (commentId) => async (dispatch) => {
     const res = await csrfFetch(`/api/comment/${commentId}`, {
       method: "DELETE",
     });
-    const deletedComment = await res.json();
-    dispatch(removeComment(deletedComment));
-    return deletedComment;
+    const deletedId = await res.json();
+    console.log("this is deletedId thunk: ", deletedId);
+    dispatch(removeComment(deletedId));
+    return deletedId;
   } catch (e) {
     console.log(e);
   }
@@ -202,7 +203,11 @@ const imageReducer = (state = initialState, action) => {
     case REMOVE_COMMENT:
       // console.log("THIS IS ACTION", action.comment);
       // console.log("THIS IS NEWSTATE.ENTRIES: ", newState.current.Comments[action.comment]);
-      delete newState.current.Comments[action.comment.id];
+      // console.log(
+      //   "AM I REMOVING COMMENT????",
+      //   newState.current.Comments[action.comment].id
+      // );
+      delete newState.current.Comments[action.comment];
       return newState;
     default:
       return state;
