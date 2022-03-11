@@ -49,6 +49,7 @@ router.post(
         model: db.User,
       },
     });
+    console.log("newCreatedComment: ", newCreatedComment);
     return res.json(newCreatedComment);
   })
 );

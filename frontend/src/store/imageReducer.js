@@ -38,7 +38,12 @@ export const fetchImages = () => async (dispatch) => {
 export const fetchImage = (imageId) => async (dispatch) => {
   const res = await fetch(`/api/images/${imageId.id}`);
   const image = await res.json();
-  // console.log("IMAGEGEGEEGE", image);
+  console.log("first image: ", image);
+  image.Comments = image.Comments.reduce((a, b) => {
+    a[b.id] = b;
+    return a;
+  }, {});
+  console.log("image again after: ", image);
   dispatch(loadImage(image));
   return image;
 };
@@ -108,7 +113,7 @@ export const addComment = (comment) => ({
 
 //thunk creator for POST comment
 export const postComment = (data) => async (dispatch) => {
-  console.log("THIS IS postComment DATA: ", data);
+  // console.log("THIS IS postComment DATA: ", data);
   const res = await csrfFetch("/api/comment/new", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -119,16 +124,16 @@ export const postComment = (data) => async (dispatch) => {
     throw new Error(`HTTP error! status: ${res.status}`);
   }
   const newComment = await res.json();
-  console.log("this is postComment new Comment: ", newComment);
+  // console.log("this is postComment new Comment: ", newComment);
   dispatch(addComment(newComment));
   return newComment;
 };
 
 export const REMOVE_COMMENT = "images/REMOVE_COMMENT";
 
-export const removeComment = (comment) => ({
+export const removeComment = (commentId) => ({
   type: REMOVE_COMMENT,
-  comment,
+  commentId,
 });
 //thunk creator for DELETE comment
 export const deleteComment = (commentId) => async (dispatch) => {
@@ -162,8 +167,9 @@ const imageReducer = (state = initialState, action) => {
       // newEntries = {};
       // newEntries[action.image?.id] = action.image;
       // newState.entries = newEntries;
+      console.log("newState.current LOAD_IMAGE: ", newState.current);
       newState.current = action.image;
-      console.log("THIS IS NEWSTATE.CURRENT LOAD: ", newState.current);
+      // console.log("THIS IS NEWSTATE.CURRENT LOAD: ", newState.current);
       // console.log("THIS IS NEWSTATE LOAD: ", newState);
       return newState;
     case ADD_IMAGE:
@@ -198,16 +204,21 @@ const imageReducer = (state = initialState, action) => {
     case ADD_COMMENT:
       // console.log("THIS IS ACTION.COMMENT: ", action.comment);
       // console.log("THIS IS ACTION COMMENT: ", newState.current);
-      newState.current.Comments[action.comment.id] = action.comment;
+      console.log("action.comment: ", action.comment);
+      console.log("newState.current.Comments: ", newState.current.Comments);
+      const newComments = { ...newState.current.Comments };
+      newComments[action.comment.id] = action.comment;
+      newState.current.Comments = newComments;
       return newState;
     case REMOVE_COMMENT:
       // console.log("THIS IS ACTION", action.comment);
       // console.log("THIS IS NEWSTATE.ENTRIES: ", newState.current.Comments[action.comment]);
       console.log(
-        "AM I REMOVING COMMENT????",
-        newState.current.Comments[action.comment]
+        "Inside Reducer: ",
+        newState.current.Comments,
+        action.commentId
       );
-      delete newState.current.Comments[action.comment];
+      delete newState.current.Comments[action.commentId];
       return newState;
     default:
       return state;

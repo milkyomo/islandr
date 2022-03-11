@@ -21,7 +21,8 @@ const AllComments = function () {
     dispatch(fetchImage(imageId));
   }, [dispatch, imageId]);
 
-  const comments = image?.Comments;
+  const comments = image?.Comments; //?.sort((a, b) => b.id - a.id);
+  console.log("Comments: ", comments);
 
   // const handleDelete = async (e, commentId) => {
   //   e.preventDefault();
@@ -42,23 +43,26 @@ const AllComments = function () {
     <div>
       <h1>Comments</h1>
       <div className="comments">
-        {comments?.reverse().map((comment) => (
-          <div key={"" + comment?.id}>
-            {/* {console.log("THIS IS COMENTS CONSOLE: ", comment.User)}; */}
-            <h1>{comment?.User?.username}</h1>
-            <p>{comment?.comment}</p>
-            {sessionUser?.id === comment?.userId && (
-              <p
-                onClick={async () => {
-                  await dispatch(deleteComment(comment?.id));
-                }}
-                className="deleteCommentBtn"
-              >
-                <i className="fa-solid fa-trash-can"></i>
-              </p>
-            )}
-          </div>
-        ))}
+        {comments &&
+          Object.values(comments)
+            .sort((a, b) => b.id - a.id)
+            .map((comment) => (
+              <div key={"" + comment?.id}>
+                {/* {console.log("THIS IS COMENTS CONSOLE: ", comment.User)}; */}
+                <h1>{comment?.User?.username}</h1>
+                <p>{comment?.comment}</p>
+                {sessionUser?.id === comment?.userId && (
+                  <p
+                    onClick={async () => {
+                      await dispatch(deleteComment(comment?.id));
+                    }}
+                    className="deleteCommentBtn"
+                  >
+                    <i className="fa-solid fa-trash-can"></i>
+                  </p>
+                )}
+              </div>
+            ))}
       </div>
     </div>
   );

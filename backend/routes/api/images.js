@@ -55,7 +55,7 @@ router.get(
         },
       ],
     });
-
+    // image.Comments = image.Comments[0];
     // console.log("IMAGE GET", image.Comments);
     return res.json(image);
   })
