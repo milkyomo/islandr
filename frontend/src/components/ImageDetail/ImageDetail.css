@@ -50,7 +50,19 @@
 }
 
 .single-image-detail-container h1 {
-    padding: 20px 0;
+    padding-top: 20px;
+}
+
+.date {
+    color: #a8bbbf;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.caption {
+    color: white;
+    margin-top: 20px;
+    font-size: 15px;
 }
 
 .single-image-detail-container img {
@@ -58,14 +70,33 @@
     width: 70%;
 }
 
-.single-image-information-container > p {
+/* .single-image-information-container > p {
     color: white;
+    margin-top: 15px;
     font-size: 15px;
-    /* padding-top: 15px; */
+} */
+
+.updateImgBtn {
+    margin-right: 20px;
+    margin-left: 90%;
+}
+
+.update-image-form > p {
+    font-size: 20px;
+    max-height: 20px;
+    max-width: 20px;
+    margin-top: 15px;
+    color: #d0f7ff;
+    cursor: pointer;
+    transition: all .15s ease-in-out;
+}
+
+.update-image-form > p:hover {
+    color: rgb(178, 185, 247);
 }
 
 hr.single-image-hr {
-    margin-top: 10%;
+    margin-top: 5%;
     border: 0;
     height: 1px;
     background: rgba(255, 255, 255, 0.301);
@@ -73,22 +104,26 @@ hr.single-image-hr {
 
 .all-comments-container {
     position: relative;
-    top: 5%;
+    top: 20px;
     min-height: 80px;
 }
 
 .all-comments-container > h2 {
     padding-bottom: 20px;
-    color: #d0f7ff;
+    color: white;
 }
 
-.postBtn {
-    font-size: 28px;
-    max-width: 28px;
-    max-height: 28px;
+.postCommentBtn > i {
+    font-size: 20px;
+    max-width: 20px;
+    max-height: 20px;
     color: #d0f7ff;
     cursor: pointer;
-    /* padding: 10px 10px; */
+    transition: all .15s ease-in-out;
+}
+
+.postCommentBtn > i:hover {
+    color: rgb(178, 185, 247);
 }
 
 .all-comments-container {
@@ -105,7 +140,8 @@ hr.single-image-hr {
 }
 
 .individual-comment:hover {
-    background-color: rgba(181, 241, 241, 0.315);
+    background-color: rgb(94, 142, 170);
+    /* background-color: rgba(130, 255, 255, 0.185); */
 }
 
 .individual-comment-user {
@@ -113,7 +149,7 @@ hr.single-image-hr {
 }
 
 .individual-comment-comment {
-    color: #424242;
+    color: #ffffff;
     padding: 8px;
 }
 

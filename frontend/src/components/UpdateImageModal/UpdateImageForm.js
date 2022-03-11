@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams, Redirect } from "react-router-dom";
-import {
-  fetchImage,
-  updateImage,
-  deleteImage,
-  fetchImages,
-  removeImage,
-  loadImage,
-} from "../../store/imageReducer";
-import img from "../images/favicon-32x32.png";
+import { fetchImage, updateImage, deleteImage } from "../../store/imageReducer";
+import img from "../images/logo32x32.png";
 
 const UpdateImageForm = ({ image, onClose }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -102,22 +95,29 @@ const UpdateImageForm = ({ image, onClose }) => {
             required
             value={imageUrl}
             onChange={updatedImageUrl}
+            name="image-url-box"
           />
         </label>
         <label>
           Add a caption (optional)
-          <input type="text" value={content} onChange={updatedContent} />
+          <textarea
+            type="text"
+            value={content}
+            onChange={updatedContent}
+            name="image-text-box"
+          />
         </label>
         <button type="submit" className="login loginmodal-submit">
-          Post Image
+          Update Image
         </button>
       </form>
       <button
         onClick={(e) => {
           handleDelete(e);
         }}
+        className="updatemodal-delete"
       >
-        Delete
+        Delete Image
       </button>
     </div>
   );

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import CreateImageFormModal from "../CreateImageModal";
-import img from "../images/favicon-32x32.png";
+import img from "../images/logo32x32.png";
 // import "./Navigation.css";
 import { Nav, NavLink, Bars, NavMenu } from "./NavbarElements";
 import "./Navigation.css";

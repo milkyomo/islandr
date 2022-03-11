@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import img from "../images/favicon-32x32.png";
+import img from "../images/logo32x32.png";
 import "./SignupForm.css";
 
 function SignupFormPage() {

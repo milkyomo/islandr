@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { postImage } from "../../store/imageReducer";
-import img from "../images/favicon-32x32.png";
+import img from "../images/logo32x32.png";
 
 const CreateImageForm = ({ onClose }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -80,17 +80,19 @@ const CreateImageForm = ({ onClose }) => {
             required={true}
             value={imageUrl}
             onChange={updatedImageUrl}
+            name="image-url-box"
           />
         </label>
         <label>
           Add a caption (optional)
-          <input type="text" value={content} onChange={updatedContent} />
+          <textarea
+            type="text"
+            value={content}
+            onChange={updatedContent}
+            name="image-text-box"
+          />
         </label>
-        <button
-          type="submit"
-          className="login loginmodal-submit"
-          name="image-text-box"
-        >
+        <button type="submit" className="login loginmodal-submit">
           Post Image
         </button>
       </form>

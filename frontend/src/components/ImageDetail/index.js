@@ -37,19 +37,27 @@ const ImageDetail = function () {
   //   return <h1> HEY THERE SUMMONER ! </h1>;
   // }
 
+  function formatDate(string) {
+    var options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(string).toLocaleDateString([], options);
+  }
+  const dateString = image?.createdAt;
+  const date = formatDate(dateString);
+
   return (
     <div className="single-image-detail-container">
       <img src={image?.imageUrl}></img>
       <div className="single-image-right-container">
         <div className="single-image-information-container">
-          <h1>Posted by {image?.User?.username}</h1>
-          <p>{image?.content}</p>
-          <hr className="single-image-hr"></hr>
+          <h1>by {image?.User?.username}</h1>
+          <p className="date">Posted on {date}</p>
+          <p className="caption">{image?.content}</p>
           {sessionUser?.id === image?.userId ? (
             <UpdateImageFormModal image={image} />
           ) : (
             <></>
           )}
+          <hr className="single-image-hr"></hr>
         </div>
         <div className="all-comments-container">
           <h2>Comments</h2>

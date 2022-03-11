@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postComment } from "../../store/imageReducer";
-import img from "../images/favicon-32x32.png";
+import img from "../images/logo32x32.png";
 
 const CommentForm = ({ onClose, image }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -35,14 +35,19 @@ const CommentForm = ({ onClose, image }) => {
         <img src={img} />
       </div>
       <br></br>
+      <div className="reminder-text">
+        <p>A little kindness goes a long way♡</p>
+      </div>
+      <br></br>
       <form onSubmit={handleSubmit}>
         <label>
           Comment
-          <input
+          <textarea
             type="text"
             required={true}
             value={comment}
             onChange={updatedComment}
+            name="image-text-box"
           />
         </label>
         <button

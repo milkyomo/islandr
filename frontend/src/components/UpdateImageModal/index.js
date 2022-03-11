@@ -8,7 +8,7 @@ function UpdateImageFormModal({ image }) {
 
   return (
     <div className="update-image-form">
-      <p onClick={() => setShowModal(true)} className="postBtn">
+      <p onClick={() => setShowModal(true)} className="updateImgBtn">
         <i className="fa-solid fa-pen-to-square"></i>
       </p>
       {showModal && (

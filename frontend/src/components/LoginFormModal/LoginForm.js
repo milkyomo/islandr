@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import img from "../images/favicon-32x32.png";
+import img from "../images/logo32x32.png";
 
 function LoginForm() {
   const dispatch = useDispatch();
