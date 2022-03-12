@@ -143,7 +143,7 @@ export const deleteComment = (commentId) => async (dispatch) => {
       method: "DELETE",
     });
     const deletedId = await res.json();
-    console.log("this is deletedId thunk: ", deletedId);
+    // console.log("this is deletedId thunk: ", deletedId);
     dispatch(removeComment(deletedId));
     return deletedId;
   } catch (e) {
@@ -213,11 +213,11 @@ const imageReducer = (state = initialState, action) => {
     case REMOVE_COMMENT:
       // console.log("THIS IS ACTION", action.comment);
       // console.log("THIS IS NEWSTATE.ENTRIES: ", newState.current.Comments[action.comment]);
-      console.log(
-        "Inside Reducer: ",
-        newState.current.Comments,
-        action.commentId
-      );
+      // console.log(
+      //   "Inside Reducer: ",
+      //   newState.current.Comments,
+      //   action.commentId
+      // );
       delete newState.current.Comments[action.commentId];
       return newState;
     default:

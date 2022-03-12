@@ -39,6 +39,11 @@ const AllComments = function () {
 
   // console.log("username", image.Comments[0].User.username);
 
+  function formatDate(string) {
+    var options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(string).toLocaleDateString([], options);
+  }
+
   return (
     <div>
       <div className="comments">
@@ -50,6 +55,7 @@ const AllComments = function () {
                 <h3 className="individual-comment-user">
                   {comment?.User?.username}
                 </h3>
+                <p>{formatDate(comment?.createdAt)}</p>
                 <p className="individual-comment-comment">{comment?.comment}</p>
                 {sessionUser?.id === comment?.userId && (
                   <div className="deleteCommentBtn">
