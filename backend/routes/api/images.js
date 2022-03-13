@@ -81,7 +81,7 @@ router.put(
   requireAuth,
   validateImage,
   asyncHandler(async function (req, res) {
-    console.log("this is backend req:", req.body);
+    // console.log("this is backend req:", req.body);
     const { id, imageUrl, content } = req.body;
     // console.log("REQ.BODY", id);
     // const updatedImage = await db.Image.update(req.body);

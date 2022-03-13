@@ -22,7 +22,7 @@ const AllComments = function () {
   }, [dispatch, imageId]);
 
   const comments = image?.Comments; //?.sort((a, b) => b.id - a.id);
-  console.log("Comments: ", comments);
+  // console.log("Comments: ", comments);
 
   // const handleDelete = async (e, commentId) => {
   //   e.preventDefault();

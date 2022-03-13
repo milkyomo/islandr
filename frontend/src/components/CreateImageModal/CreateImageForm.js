@@ -36,7 +36,7 @@ const CreateImageForm = ({ onClose }) => {
         const data = await res.json();
         // console.log("this is data: ", data);
         if (data && data.errors) setErrors(data.errors);
-        console.log("Create Errors: ", data.errors);
+        // console.log("Create Errors: ", data.errors);
       }
     );
 
