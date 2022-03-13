@@ -5,7 +5,8 @@
     justify-content: center;
     flex-direction: column;
     width: 90vw;
-    padding: 0 200px;
+    padding: 0 1%;
+    padding-bottom: 20%;
     margin: 0 auto;
 }
 
