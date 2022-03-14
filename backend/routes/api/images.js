@@ -55,8 +55,7 @@ router.get(
         },
       ],
     });
-    // image.Comments = image.Comments[0];
-    // console.log("IMAGE GET", image.Comments);
+
     return res.json(image);
   })
 );
@@ -67,10 +66,9 @@ router.post(
   requireAuth,
   validateImage,
   asyncHandler(async (req, res) => {
-    // console.log("this is req.body", req.body);
     const { id, userId, imageUrl, content } = req.body;
     const image = await db.Image.create({ id, userId, imageUrl, content });
-    // console.log("IMAGE POST", image);
+
     return res.json(image);
   })
 );
@@ -81,9 +79,7 @@ router.put(
   requireAuth,
   validateImage,
   asyncHandler(async function (req, res) {
-    // console.log("this is backend req:", req.body);
     const { id, imageUrl, content } = req.body;
-    // console.log("REQ.BODY", id);
     // const updatedImage = await db.Image.update(req.body);
     await db.Image.update(
       { imageUrl, content },
@@ -118,8 +114,7 @@ router.put(
         },
       ],
     });
-    // console.log("IMAGE HERE:::", image);
-    // console.log("IMAGE KEYING INTO HERE:::", image[1][0]);
+
     return res.json(image);
   })
 );

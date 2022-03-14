@@ -93,7 +93,7 @@ function Slideshow() {
             <h1>Find your inspiration.</h1>
             <p>
               Join the islandr community and get inspired for your next Animal
-              Crossing: New Horizon's build.
+              Crossing: New Horizons build.
             </p>
           </>
         )}

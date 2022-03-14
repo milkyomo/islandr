@@ -5,7 +5,6 @@ import img from "../images/logo32x32.png";
 
 const CommentForm = ({ onClose, image }) => {
   const sessionUser = useSelector((state) => state.session.user);
-  //   console.log("THIS IS IMAGE FROM FORM", image);
 
   const dispatch = useDispatch();
 

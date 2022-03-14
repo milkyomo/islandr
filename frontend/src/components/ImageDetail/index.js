@@ -23,15 +23,10 @@ const ImageDetail = function () {
 
   const imageObject = useSelector((state) => state.imageState);
   const image = imageObject.current;
-  // console.log("IMAGE COMPONENT:", imageObject.current.Comments);
-  // const comments = imageObject.current.Comments; //array of objects ;)
-  // console.log("THESE ARE THE COMMENTS", comments);
-  // console.log("username?", imageObject);
 
   useEffect(() => {
     dispatch(fetchImage(imageId));
   }, [dispatch, imageId]);
-  // console.log("message and image id:::", imageId);
 
   // if (sessionUser.id === image.userId) {
   //   return <h1> HEY THERE SUMMONER ! </h1>;

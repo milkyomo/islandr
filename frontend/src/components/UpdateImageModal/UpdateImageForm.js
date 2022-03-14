@@ -6,15 +6,11 @@ import img from "../images/logo32x32.png";
 
 const UpdateImageForm = ({ image, onClose }) => {
   const sessionUser = useSelector((state) => state.session.user);
-  //   const sessionImage = useSelector((state) => state.session);
+
   const imageToUpdate = useSelector(() => image);
-  //   console.log("SESSIONIMAFE", imageToUpdate.imageUrl);
-  //HOW TO GET IMAGE TO CHANGE THE VALUES OF IT?????? PASS IN AS CHILD?
 
   const dispatch = useDispatch();
   const history = useHistory();
-
-  // const [stateHistory, setStateHistory] = useState(useHistory());
 
   const [imageUrl, setImageUrl] = useState(imageToUpdate.imageUrl);
   const [content, setContent] = useState(imageToUpdate.content);
@@ -24,22 +20,10 @@ const UpdateImageForm = ({ image, onClose }) => {
   const updatedContent = (e) => setContent(e.target.value);
 
   const params = useParams();
-  //   const id = oldId.id;
-  //   console.log(id);
 
   useEffect(() => {
     dispatch(fetchImage(image));
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   console.log(`Successfully pushed to ${stateHistory}!`);
-  // }, [stateHistory]);
-
-  // const redirectToExplore = (stateHistory) => {
-  //   console.log(`redirecting to explore`);
-  //   stateHistory.push("/explore");
-  //   setStateHistory({ ...stateHistory });
-  // };
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -59,7 +43,6 @@ const UpdateImageForm = ({ image, onClose }) => {
       imageUrl,
       content,
     };
-    // console.log("ONCLOSE", onClose);
 
     setErrors([]);
     dispatch(updateImage(params.id, updatedImage)).catch(async (res) => {
@@ -68,7 +51,6 @@ const UpdateImageForm = ({ image, onClose }) => {
     });
 
     if (!errors.length) {
-      // console.log("HELLO???");
       onClose();
       // history.push(`/images/${params.id}`);
       // dispatch(fetchImage(image.id));

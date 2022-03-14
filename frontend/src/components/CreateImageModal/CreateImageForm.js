@@ -20,35 +20,24 @@ const CreateImageForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // setErrors([]);
-
     let createdImage = {
       userId: sessionUser.id,
       imageUrl,
       content,
     };
-    // console.log("THIS IS CREATEDIMAGE: ", createdImage);
 
     setErrors("");
     const newImage = await dispatch(postImage(createdImage)).catch(
       async (res) => {
-        // console.log("am i here ?");
         const data = await res.json();
-        // console.log("this is data: ", data);
         if (data && data.errors) setErrors(data.errors);
-        // console.log("Create Errors: ", data.errors);
       }
     );
 
     if (newImage.id) {
-      // console.log("does this even matter");
-      // console.log("This is newImage.id", newImage.id);
       onClose();
       history.push(`/images/${newImage.id}`);
     }
-
-    // console.log("CREATED IMAGE ID", createdImage);
-
     // if (createdImage) {
     //   const newImage = await dispatch(postImage(createdImage));
 
@@ -67,12 +56,7 @@ const CreateImageForm = ({ onClose }) => {
       </div>
       <br></br>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {/* {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))} */}
-          {errors}
-        </ul>
+        <ul>{errors}</ul>
         <label>
           Image URL
           <input

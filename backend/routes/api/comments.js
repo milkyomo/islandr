@@ -33,14 +33,12 @@ router.post(
   requireAuth,
   validateComment,
   asyncHandler(async (req, res) => {
-    // console.log("this is req.body", req.body);
     const { userId, imageId, comment } = req.body;
     const createdComment = await db.Comment.create({
       userId,
       imageId,
       comment,
     });
-    // console.log("this is the created comment", createdComment);
     const newCreatedComment = await db.Comment.findOne({
       where: {
         id: createdComment.id,
@@ -49,7 +47,6 @@ router.post(
         model: db.User,
       },
     });
-    // console.log("newCreatedComment: ", newCreatedComment);
     return res.json(newCreatedComment);
   })
 );
@@ -59,17 +56,14 @@ router.delete(
   "/:id",
   requireAuth,
   asyncHandler(async function (req, res) {
-    // console.log("this is delete api req: ", req);
     const commentId = parseInt(req.params.id);
-    // console.log("this is commentId: ", commentId);
     const comment = await db.Comment.findOne({
       where: {
         id: commentId,
       },
     });
-    // console.log("this is comment to delete: ", comment);
+
     if (!comment) throw new Error("Cannot find comment!");
-    // if (!comment) console.log("what is wrong?");
 
     await comment.destroy();
     return res.json(commentId);
