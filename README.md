@@ -18,6 +18,7 @@
 - [Features](#features)
 - [To-do/Future Features](#to-dofuture-features)
 - [Technical Implementation Details](#technical-implementation-details)
+- [Image Credits](#image-credits)
 
 # Technologies Used
 
@@ -237,3 +238,14 @@ router.put(
 ```
 
 Instead of having a nested includes, I could have made a separate route for getting all comments, and then matching the `imageId` in the Comment model with the `id` in the Image model in the frontend, and displaying those on the page.
+
+# Image Credits
+
+The following 6 people took the time out of their day to send me their amazing pictures of their Animal Crossing islands. Super duper special thanks to them. Thank you so much!!! I hand seeded all the files and tried my best to make the captions close to theirs, if available. Thank you, thank you :)
+   
+   * Anna ig: @life.onluna
+   * Dani ig: @crystal.faiiry
+   * Lena ig: @lenacrossing
+   * Liyah ig: @liyah.crossing
+   * Liz ig: @sage.shenanigans
+   * Maya ig: @lily_acnh_
