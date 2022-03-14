@@ -117,7 +117,7 @@ In the future, I would love to implement tags for images, so users can add tags 
 
 ### To-do
 
-- [ ] Add date created to individual comments
+- [x] Add date created to individual comments
 - [ ] Make explore page slideshow into fade transition, and fit/scale to screen
 - [ ] Make Image Detail page into modal
 - [ ] Add tags to images
