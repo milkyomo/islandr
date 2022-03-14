@@ -91,8 +91,8 @@ git clone git@github.com:milkyomo/islandr.git
 Click the Log In button on the right of the Navigation Bar, then click "or use a vistor pass".
 <br>
 Example of how to use Demo User login:
-
-![how to use demo user](https://i.gyazo.com/06c6d1656671bb7b10be88193184fc3c.png)
+   
+![demo](https://user-images.githubusercontent.com/89059894/158127311-dff72091-b6d3-484d-bf83-81b55cb28b0f.gif)
 
 </details>
 <br>
