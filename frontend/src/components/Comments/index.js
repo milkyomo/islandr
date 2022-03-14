@@ -40,7 +40,9 @@ const AllComments = function () {
                 <h3 className="individual-comment-user">
                   {comment?.User?.username}
                 </h3>
-                <p>{formatDate(comment?.createdAt)}</p>
+                <p className="individual-comment-date">
+                  {formatDate(comment?.createdAt)}
+                </p>
                 <p className="individual-comment-comment">{comment?.comment}</p>
                 {sessionUser?.id === comment?.userId && (
                   <div className="deleteCommentBtn">
