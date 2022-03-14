@@ -48,9 +48,11 @@ const UpdateImageForm = ({ image, onClose }) => {
     dispatch(updateImage(params.id, updatedImage)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
+      // console.log(data.errors);
     });
+    // console.log(errors);
 
-    if (!errors.length) {
+    if (!errors) {
       onClose();
       // history.push(`/images/${params.id}`);
       // dispatch(fetchImage(image.id));
@@ -66,9 +68,10 @@ const UpdateImageForm = ({ image, onClose }) => {
       <br></br>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
+          {/* {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
-          ))}
+          ))} */}
+          {errors}
         </ul>
         <label>
           Image URL

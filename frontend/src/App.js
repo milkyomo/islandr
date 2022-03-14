@@ -42,7 +42,6 @@ function App() {
           </Route>
         </Switch>
       )}
-      {/* {location.pathname !== "/signup" && <Footer />} */}
       <Footer />
     </>
   );
