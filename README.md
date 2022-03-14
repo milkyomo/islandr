@@ -37,6 +37,7 @@
 
 <details>
 <summary>How do I run this project?</summary>
+   
 1. Clone this repo.
 
 ```bash
