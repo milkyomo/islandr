@@ -92,7 +92,7 @@ Click the Log In button on the right of the Navigation Bar, then click "or use a
 <br>
 Example of how to use Demo User login:
 
-![how to use demo user](https://i.gyazo.com/34a900f3e3ad47af3cf052be873b276c.gif)
+![how to use demo user](https://i.gyazo.com/06c6d1656671bb7b10be88193184fc3c.png)
 
 </details>
 <br>
