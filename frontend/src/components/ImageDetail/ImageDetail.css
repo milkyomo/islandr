@@ -144,6 +144,11 @@ hr.single-image-hr {
     /* background-color: rgba(130, 255, 255, 0.185); */
 }
 
+.individual-comment > p {
+    color: #ffffff;
+    padding-top: 3px;
+}
+
 .individual-comment-user {
     color: #d0f7ff;
 }
