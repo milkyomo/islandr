@@ -42,20 +42,15 @@ const UpdateImageForm = ({ image, onClose }) => {
       content,
     };
 
-    setErrors([]);
-    dispatch(updateImage(params.id, updatedImage)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-      // console.log(data.errors);
-    });
-    // console.log(errors);
-
-    if (!errors.length) {
-      onClose();
-      console.log(errors);
-      // history.push(`/images/${params.id}`);
-      // dispatch(fetchImage(image.id));
-    }
+    // setErrors([]);
+    dispatch(updateImage(params.id, updatedImage))
+      .then(async (res) => {
+        onClose();
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (

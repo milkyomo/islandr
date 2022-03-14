@@ -74,12 +74,14 @@ export const updateImage = (imageId, data) => async (dispatch) => {
   });
 
   if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
+    console.log("res thunk", res);
+    // throw new Error(`HTTP error! status: ${res.status}`);
+    return res.errors;
   }
   const updatedImage = await res.json();
 
   dispatch(loadImage(updatedImage));
-  return updateImage;
+  return updatedImage;
   // } catch (e) {
   //   console.log(e);
   // }
