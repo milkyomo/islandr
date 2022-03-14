@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams, Redirect } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { fetchImage, updateImage, deleteImage } from "../../store/imageReducer";
 import img from "../images/logo32x32.png";
 
 const UpdateImageForm = ({ image, onClose }) => {
-  const sessionUser = useSelector((state) => state.session.user);
-
   const imageToUpdate = useSelector(() => image);
 
   const dispatch = useDispatch();
@@ -52,8 +50,9 @@ const UpdateImageForm = ({ image, onClose }) => {
     });
     // console.log(errors);
 
-    if (!errors) {
+    if (!errors.length) {
       onClose();
+      console.log(errors);
       // history.push(`/images/${params.id}`);
       // dispatch(fetchImage(image.id));
     }
