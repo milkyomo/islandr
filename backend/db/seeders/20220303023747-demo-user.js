@@ -48,25 +48,25 @@ module.exports = {
           username: "Francine",
           hashedPassword: bcrypt.hashSync("FrancinePassword123"),
         },
-        //8
+        //8 x
         {
           email: "crystal.faiiry@user.io",
           username: "Dani",
           hashedPassword: bcrypt.hashSync("CrystalPassword123"),
         },
-        //9
+        //9 x
         {
           email: "lenacrossing@user.io",
           username: "Lena",
           hashedPassword: bcrypt.hashSync("LenaPassword123"),
         },
-        //10
+        //10 x
         {
           email: "lily_acnh_@user.io",
           username: "Maya",
           hashedPassword: bcrypt.hashSync("LenaPassword123"),
         },
-        //11
+        //11 x
         {
           email: "liyah.crossing@user.io",
           username: "Liyah",
@@ -78,7 +78,7 @@ module.exports = {
           username: "Anna",
           hashedPassword: bcrypt.hashSync("LenaPassword123"),
         },
-        //13
+        //13 x
         {
           email: "sage.shenanigans@user.io",
           username: "Liz",
