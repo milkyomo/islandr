@@ -14,6 +14,11 @@ const app = express();
 
 app.use(morgan("dev"));
 app.use(cookieParser());
+
+//aws urlencoded
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.use(express.json());
 
 // Security Middleware
