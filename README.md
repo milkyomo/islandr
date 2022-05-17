@@ -107,7 +107,8 @@ All users can perform the following actions.
 
 Logged in users can perform the following actions.
 
-- View/Add Images
+- View Images
+- Upload Images
 - Edit/Delete their own Images
 - View/Add Comments
 - Delete their own Comments
