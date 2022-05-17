@@ -49,16 +49,25 @@ export const fetchImage = (imageId) => async (dispatch) => {
 
 //thunk creator for POST image request
 export const postImage = (data) => async (dispatch) => {
+  const { userId, imageUrl, content } = data;
+  const formData = new FormData();
+  formData.append("userId", userId);
+  formData.append("content", content);
+  formData.append("imageUrl", imageUrl);
+
   const res = await csrfFetch("/api/images/new", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    // headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "multipart/form-data" },
+    // body: JSON.stringify(image),
+    body: formData,
   });
 
   if (!res.ok) {
     throw new Error(`HTTP error! status: ${res.status}`);
   }
   const newImage = await res.json();
+  console.log("REDUCER NEWIMAGE!!!", newImage);
 
   dispatch(addImage(newImage));
   return newImage;

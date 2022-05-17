@@ -48,6 +48,11 @@ const CreateImageForm = ({ onClose }) => {
     // return history.push(`/images/${newImage.id}`);
   };
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    setImageUrl(file);
+  };
+
   return (
     <div className="createimg-container">
       <div className="loginmodal-container-box">
@@ -57,7 +62,7 @@ const CreateImageForm = ({ onClose }) => {
       <br></br>
       <form onSubmit={handleSubmit}>
         <ul>{errors}</ul>
-        <label>
+        {/* <label>
           Image URL
           <input
             type="text"
@@ -66,6 +71,17 @@ const CreateImageForm = ({ onClose }) => {
             onChange={updatedImageUrl}
             name="image-url-box"
           />
+        </label> */}
+        <label>
+          Image Upload
+          <div>
+            <input
+              type="file"
+              onChange={updateFile}
+              accept="image/*"
+              required
+            />
+          </div>
         </label>
         <label>
           Add a caption (optional)
