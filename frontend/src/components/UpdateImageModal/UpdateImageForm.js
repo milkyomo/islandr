@@ -25,12 +25,20 @@ const UpdateImageForm = ({ image, onClose }) => {
 
   const handleDelete = async (e) => {
     e.preventDefault();
+    let deletedImage;
+    if (window.confirm("Are you sure you want to delete this image?")) {
+      deletedImage = await dispatch(deleteImage(image.id));
 
-    let res = await dispatch(deleteImage(image.id));
-    // dispatch(fetchImages());
-    if (res) {
-      history.push("/explore");
+      if (deletedImage) {
+        history.push("/explore");
+      }
     }
+
+    // let res = await dispatch(deleteImage(image.id));
+    // // dispatch(fetchImages());
+    // if (res) {
+    //   history.push("/explore");
+    // }
   };
 
   const handleSubmit = async (e) => {
@@ -67,7 +75,7 @@ const UpdateImageForm = ({ image, onClose }) => {
           ))} */}
           {errors}
         </ul>
-        <label>
+        {/* <label>
           Image URL
           <input
             type="text"
@@ -76,9 +84,9 @@ const UpdateImageForm = ({ image, onClose }) => {
             onChange={updatedImageUrl}
             name="image-url-box"
           />
-        </label>
+        </label> */}
         <label>
-          Add a caption (optional)
+          Edit caption~
           <textarea
             type="text"
             value={content}

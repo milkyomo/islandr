@@ -67,7 +67,6 @@ export const postImage = (data) => async (dispatch) => {
     throw new Error(`HTTP error! status: ${res.status}`);
   }
   const newImage = await res.json();
-  console.log("REDUCER NEWIMAGE!!!", newImage);
 
   dispatch(addImage(newImage));
   return newImage;
@@ -83,7 +82,6 @@ export const updateImage = (imageId, data) => async (dispatch) => {
   });
 
   if (!res.ok) {
-    console.log("res thunk", res);
     // throw new Error(`HTTP error! status: ${res.status}`);
     return res.errors;
   }

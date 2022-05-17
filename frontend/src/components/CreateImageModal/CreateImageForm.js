@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { postImage } from "../../store/imageReducer";
@@ -12,10 +12,23 @@ const CreateImageForm = ({ onClose }) => {
 
   const [imageUrl, setImageUrl] = useState("");
   const [content, setContent] = useState("");
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const updatedImageUrl = (e) => setImageUrl(e.target.value);
   const updatedContent = (e) => setContent(e.target.value);
+
+  useEffect(() => {
+    const validationErrors = [];
+    if (imageUrl) {
+      if (imageUrl.length === 0) validationErrors.push("");
+      if (imageUrl.size > 1000000)
+        validationErrors.push("Image must be under 1MB, bestie!");
+      if (content.length > 20000)
+        validationErrors.push("Description must be 20000 characters or less");
+
+      setErrors(validationErrors);
+    }
+  }, [imageUrl, content]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +39,7 @@ const CreateImageForm = ({ onClose }) => {
       content,
     };
 
-    setErrors("");
+    setErrors([]);
     const newImage = await dispatch(postImage(createdImage)).catch(
       async (res) => {
         const data = await res.json();
@@ -60,8 +73,12 @@ const CreateImageForm = ({ onClose }) => {
         <img src={img} />
       </div>
       <br></br>
+      <div className="uploadrule">
+        Please upload Animal Crossing related photos only! Thank you :)
+      </div>
+      <br></br>
       <form onSubmit={handleSubmit}>
-        <ul>{errors}</ul>
+        <ul>{errors && errors.map((error) => <li key={error}>{error}</li>)}</ul>
         {/* <label>
           Image URL
           <input
@@ -73,7 +90,8 @@ const CreateImageForm = ({ onClose }) => {
           />
         </label> */}
         <label>
-          Image Upload
+          {/* Image Upload */}
+          Image upload
           <div>
             <input
               type="file"
@@ -82,7 +100,19 @@ const CreateImageForm = ({ onClose }) => {
               required
             />
           </div>
+          {imageUrl && (
+            <>
+              <div>
+                File size:
+                <span className={imageUrl.size > 1000000 ? "badentry" : ""}>
+                  {(imageUrl.size / 1000).toFixed(2)} KB
+                </span>{" "}
+                / 1000 KB
+              </div>
+            </>
+          )}
         </label>
+        <br></br>
         <label>
           Add a caption (optional)
           <textarea
@@ -92,7 +122,11 @@ const CreateImageForm = ({ onClose }) => {
             name="image-text-box"
           />
         </label>
-        <button type="submit" className="login loginmodal-submit">
+        <button
+          type="submit"
+          className="login loginmodal-submit"
+          disabled={errors.length > 0}
+        >
           Post Image
         </button>
       </form>

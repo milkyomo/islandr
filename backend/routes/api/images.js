@@ -91,14 +91,12 @@ router.post(
     const { id, userId, content } = req.body;
     // const image = await db.Image.create({ id, userId, imageUrl, content });
     const imageUploadUrl = await singlePublicFileUpload(req.file);
-    console.log("IMAGE ROUTE!!!!", imageUploadUrl);
     const newImage = await db.Image.create({
       id,
       userId,
       imageUrl: imageUploadUrl,
       content,
     });
-    console.log("NEWIMAGE ROUTE!!!!!", newImage);
 
     // const image = await db.Image.findByPk(newImage.id);
 
