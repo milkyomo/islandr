@@ -1,6 +1,6 @@
 # Islandr
 
-[Islandr](https://islandracnh.herokuapp.com/), based on [Flickr](https://www.flickr.com/), is a website for Animal Crossing: New Horizons inspiration.
+[Islandr](https://islandracnh.herokuapp.com/), based on [Flickr](https://www.flickr.com/), is a website for Animal Crossing: New Horizons inspiration that features AWS upload for images, as well as commenting on images.
 
 # Index
 
