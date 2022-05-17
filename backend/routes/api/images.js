@@ -2,6 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 
 const { requireAuth } = require("../../utils/auth");
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 
 // const { User } = require("../../db/models");
 // const imageValidations = require("../../utils/validateImage");
@@ -13,12 +14,31 @@ const router = express.Router();
 
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+// const validateImage = [
+//   check("imageUrl")
+//     .notEmpty()
+//     .isURL({ require_protocol: false, require_host: false })
+//     .withMessage("Please provide a valid URL, bestie!"),
+//   handleValidationErrors,
+// ];
 const validateImage = [
-  check("imageUrl")
-    .notEmpty()
-    .isURL({ require_protocol: false, require_host: false })
-    .withMessage("Please provide a valid URL, bestie!"),
-  handleValidationErrors,
+  check("imageUrl").custom(async (_value, { req }) => {
+    if (!req.file && !req.body.imageUrl) {
+      return await Promise.reject("Please upload an image, bestie!.");
+    } else if (
+      req.file &&
+      req.file.mimetype !== "image/jpeg" &&
+      req.file.mimetype !== "image/jpg" &&
+      req.file.mimetype !== "image/png" &&
+      req.file.mimetype !== "image/gif"
+    ) {
+      return await Promise.reject(
+        "Please use these file types: .jpeg, .jpg, .png, .gif"
+      );
+    } else if (req.file && req.file.size > 1000000) {
+      return await Promise.reject("Image must be under 1MB, bestie!");
+    }
+  }),
 ];
 
 //explore
@@ -64,12 +84,23 @@ router.get(
 router.post(
   "/new",
   requireAuth,
+  singleMulterUpload("imageUrl"),
   validateImage,
   asyncHandler(async (req, res) => {
-    const { id, userId, imageUrl, content } = req.body;
-    const image = await db.Image.create({ id, userId, imageUrl, content });
+    // const { id, userId, imageUrl, content } = req.body;
+    const { id, userId, content } = req.body;
+    // const image = await db.Image.create({ id, userId, imageUrl, content });
+    const imageUploadUrl = await singlePublicFileUpload(req.file);
+    const newImage = await db.Image.create({
+      id,
+      userId,
+      imageUrl: imageUploadUrl,
+      content,
+    });
 
-    return res.json(image);
+    // const image = await db.Image.findByPk(newImage.id);
+
+    return res.json(newImage);
   })
 );
 
