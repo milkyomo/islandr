@@ -58,14 +58,15 @@ function Slideshow() {
   return (
     <div className="landingpage-container">
       <div className="slideshow">
-        <div
+        {/* <div
           className="slideshowSlider"
           style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
         >
           {images.map((image, index) => (
             <img className="slide" key={index} src={image}></img>
           ))}
-        </div>
+        </div> */}
+        <img src={img1} className="background-landing"/>
 
         {/* <div className="slideshowDots">
           {images.map((_, idx) => (
