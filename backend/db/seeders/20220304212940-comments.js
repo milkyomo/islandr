@@ -17,8 +17,8 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+    options.tableName = "Comments";
     return queryInterface.bulkInsert(options,
-      "Comments",
       [
         {
           userId: 4,
@@ -83,6 +83,7 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete(options, "Comments", null, {});
+    options.tableName = "Comments";
+    return queryInterface.bulkDelete(options, null, {});
   },
 };

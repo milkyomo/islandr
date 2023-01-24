@@ -17,8 +17,8 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+    options.tableName = 'Images';
     return queryInterface.bulkInsert(options,
-      "Images",
       [
         {
           userId: 5,
@@ -664,6 +664,7 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete(options, "Images", null, {});
+    options.tableName = 'Images';
+    return queryInterface.bulkDelete(options, null, {});
   },
 };
