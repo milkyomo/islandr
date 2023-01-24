@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import Slider from "./Slider"
+import Images from "./images"
 
 import img1 from "../images/image1.jpg";
 import img2 from "../images/image2.jpg";
@@ -31,41 +33,42 @@ function Slideshow() {
     );
   }
 
-  const [index, setIndex] = useState(0);
-  const timeoutRef = React.useRef(null);
+  // const [index, setIndex] = useState(0);
+  // const timeoutRef = React.useRef(null);
 
-  function resetTimeout() {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  }
+  // function resetTimeout() {
+  //   if (timeoutRef.current) {
+  //     clearTimeout(timeoutRef.current);
+  //   }
+  // }
 
-  useEffect(() => {
-    resetTimeout();
-    timeoutRef.current = setTimeout(
-      () =>
-        setIndex((prevIndex) =>
-          prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        ),
-      delay
-    );
+  // useEffect(() => {
+  //   resetTimeout();
+  //   timeoutRef.current = setTimeout(
+  //     () =>
+  //       setIndex((prevIndex) =>
+  //         prevIndex === images.length - 1 ? 0 : prevIndex + 1
+  //       ),
+  //     delay
+  //   );
 
-    return () => {
-      resetTimeout();
-    };
-  }, [index]);
+  //   return () => {
+  //     resetTimeout();
+  //   };
+  // }, [index]);
 
   return (
     <div className="landingpage-container">
       <div className="slideshow">
-        <div
+        {/* <div
           className="slideshowSlider"
           style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
         >
           {images.map((image, index) => (
             <img className="slide" key={index} src={image}></img>
           ))}
-        </div>
+        </div> */}
+        <Slider images={Images} />
 
         {/* <div className="slideshowDots">
           {images.map((_, idx) => (
